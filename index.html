@@ -2,129 +2,158 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Prezentace 01-40</title>
     <style>
-        /* ZMĚNA 1: Hlavní pozadí stránky už není černé, ale fialové (Deep Indigo) */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
-            background-color: #370090; /* Změněno z #000 */
-            color: #fff; /* Pro jistotu bílý text, kdyby se někde objevil */
+            background-color: #370090; /* Deep Indigo */
+            color: #fff;
+            overflow-x: hidden; /* Skryje vodorovný posuvník prohlížeče */
         }
 
-        /* Kontejner pro slide */
+        /* --- HLAVNÍ KONTEJNER PRO SLIDE --- */
         .slide-container {
             width: 100%;
             position: relative;
-            min-height: 100vh; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
-            /* ZMĚNA 2: Oddělovač teď bude spíš rušit, dáme ho pryč nebo do barvy pozadí */
-            border-bottom: none; 
+            border-bottom: 4px solid #220055; /* Oddělovač */
+            background-color: #370090;
+            /* Flexbox zajistí centrování obsahu, pokud je okno širší než slide */
+            display: flex;
+            justify-content: center; 
         }
 
-        /* HTML stránky (iframe) */
+        /* --- LOGIKA PRO HTML (Virtuální Monitor) --- */
+        .virtual-monitor {
+            /* Fixní rozlišení, ve kterém se tvůj design (dva sloupce) nikdy nerozbije */
+            width: 1280px; 
+            height: 800px; /* Poměr 16:10 */
+            
+            /* Klíčové pro správné zmenšování: */
+            transform-origin: top center; /* Zmenšovat ke středu horní hrany */
+            flex-shrink: 0; /* Zabrání deformaci flexboxem */
+            
+            /* Optimalizace výkonu pro mobily */
+            will-change: transform; 
+        }
+
         iframe {
             width: 100%;
-            height: 100vh;
+            height: 100%;
             border: none;
             display: block;
+            background-color: #370090; /* Zabrání bílému probliknutí */
         }
 
-        /* Obrázky */
-        img.slide-img {
+        /* --- LOGIKA PRO OBRÁZKY (PNG) --- */
+        .image-slide img {
             width: 100%;
             height: auto;
             display: block;
-            /* Maximální šířka - pokud chceš obrázky přes celou šířku i na velkém monitoru,
-               můžeš tohle smazat nebo zvětšit na 100% */
-            max-width: 100%; 
+            max-width: 1280px; /* Omezení šířky na PC */
         }
         
-        /* Specifický styl kontejneru pro obrázky */
-        .slide-container.is-image {
-            min-height: auto;
-            height: auto;
+        .image-slide {
+            /* Obrázky nepotřebují fixní výšku, přizpůsobí se samy */
+            height: auto !important; 
             padding: 0;
-            /* ZMĚNA 3: Pozadí pod obrázkem musí být stejné jako zbytek stránky */
-            background-color: #370090; 
+            background-color: #370090;
         }
+
     </style>
 </head>
 <body>
 
-    <div class="slide-container"><iframe src="01.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="02.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="03.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="04.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="05.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="06.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="07.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="08.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="09.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="10.html" loading="lazy"></iframe></div>
+    <script>
+        function fitSlidesToScreen() {
+            const targetWidth = 1280; 
+            const targetHeight = 800;
+            const screenWidth = window.innerWidth;
 
-    <div class="slide-container is-image">
-        <img src="11.png" class="slide-img" alt="Slide 11">
-    </div>
+            const monitors = document.querySelectorAll('.virtual-monitor');
 
-    <div class="slide-container"><iframe src="12.html" loading="lazy"></iframe></div>
+            monitors.forEach(monitor => {
+                // Výpočet poměru zmenšení
+                let scaleRatio = screenWidth / targetWidth;
+                
+                // Nikdy nezvětšovat nad 100% (aby to nebylo rozmazané na obřích monitorech)
+                if (scaleRatio > 1) scaleRatio = 1;
 
-    <div class="slide-container is-image">
-        <img src="13.png" class="slide-img" alt="Slide 13">
-    </div>
+                // 1. Aplikovat zmenšení
+                monitor.style.transform = `scale(${scaleRatio})`;
 
-    <div class="slide-container"><iframe src="14.html" loading="lazy"></iframe></div>
+                // 2. Upravit výšku obalu (.slide-container)
+                // Protože když zmenšíme obsah, obal by zůstal vysoký a vznikla by díra.
+                const parentHeight = targetHeight * scaleRatio;
+                monitor.parentElement.style.height = parentHeight + 'px';
+            });
+        }
 
-    <div class="slide-container is-image">
-        <img src="15.png" class="slide-img" alt="Slide 15">
-    </div>
+        // Spuštění při načtení
+        window.addEventListener('load', fitSlidesToScreen);
+        // Spuštění při změně velikosti (otočení mobilu)
+        window.addEventListener('resize', fitSlidesToScreen);
+        // Pojistka pro některé mobilní prohlížeče (načtení z cache)
+        window.addEventListener('pageshow', fitSlidesToScreen);
+    </script>
 
-    <div class="slide-container"><iframe src="16.html" loading="lazy"></iframe></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="01.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="02.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="03.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="04.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="05.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="06.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="07.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="08.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="09.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="10.html" loading="lazy"></iframe></div></div>
 
-    <div class="slide-container is-image">
-        <img src="17.png" class="slide-img" alt="Slide 17">
-    </div>
+    <div class="slide-container image-slide"><img src="11.png" alt="Slide 11"></div>
 
-    <div class="slide-container"><iframe src="18.html" loading="lazy"></iframe></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="12.html" loading="lazy"></iframe></div></div>
 
-    <div class="slide-container is-image">
-        <img src="19.png" class="slide-img" alt="Slide 19">
-    </div>
+    <div class="slide-container image-slide"><img src="13.png" alt="Slide 13"></div>
 
-    <div class="slide-container"><iframe src="20.html" loading="lazy"></iframe></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="14.html" loading="lazy"></iframe></div></div>
 
-    <div class="slide-container is-image">
-        <img src="21.png" class="slide-img" alt="Slide 21">
-    </div>
+    <div class="slide-container image-slide"><img src="15.png" alt="Slide 15"></div>
 
-    <div class="slide-container"><iframe src="22.html" loading="lazy"></iframe></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="16.html" loading="lazy"></iframe></div></div>
 
-    <div class="slide-container is-image">
-        <img src="23.png" class="slide-img" alt="Slide 23">
-    </div>
+    <div class="slide-container image-slide"><img src="17.png" alt="Slide 17"></div>
 
-    <div class="slide-container"><iframe src="24.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="25.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="26.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="27.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="28.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="29.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="30.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="31.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="32.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="33.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="34.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="35.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="36.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="37.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="38.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="39.html" loading="lazy"></iframe></div>
-    <div class="slide-container"><iframe src="40.html" loading="lazy"></iframe></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="18.html" loading="lazy"></iframe></div></div>
+
+    <div class="slide-container image-slide"><img src="19.png" alt="Slide 19"></div>
+
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="20.html" loading="lazy"></iframe></div></div>
+
+    <div class="slide-container image-slide"><img src="21.png" alt="Slide 21"></div>
+
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="22.html" loading="lazy"></iframe></div></div>
+
+    <div class="slide-container image-slide"><img src="23.png" alt="Slide 23"></div>
+
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="24.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="25.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="26.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="27.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="28.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="29.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="30.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="31.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="32.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="33.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="34.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="35.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="36.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="37.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="38.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="39.html" loading="lazy"></iframe></div></div>
+    <div class="slide-container"><div class="virtual-monitor"><iframe src="40.html" loading="lazy"></iframe></div></div>
 
 </body>
 </html>
