@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 4 - Visual Design Big Fonts</title>
+    <title>Slide - Visual Design Fix</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ZÁCHRANNÝ BLOK (Fix pro přetékání) --- */
+        /* --- ZÁCHRANNÝ BLOK --- */
         * {
-            box-sizing: border-box; /* Klíčové: padding se počítá dovnitř */
+            box-sizing: border-box;
         }
 
-        /* DEFINICE BAREV */
         :root {
-            --bg-color: #370090;      /* Deep Indigo */
-            --bg-dark: #120030;       /* Darker shade for gradient */
-            --text-color: #ffffff;    /* White */
-            --brick-color: #B22222;   /* Firebrick */
+            --bg-color: #370090;
+            --bg-dark: #120030;
+            --text-color: #ffffff;
+            --brick-color: #B22222;
         }
 
         html, body {
@@ -28,7 +27,7 @@
             height: 100%; 
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Zabrání scrollování */
+            overflow: hidden; /* Žádné scrollování */
         }
 
         body {
@@ -36,23 +35,20 @@
             background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
             color: var(--text-color);
             font-family: 'Open Sans', sans-serif;
-            
-            /* Změněno na relativní jednotky a box-sizing to udrží uvnitř */
-            padding: 2vh 2vw 2vh 2vw; 
-            
+            /* Menší padding na stranách, aby zbylo místo pro obsah */
+            padding: 2vh 1vw 2vh 1vw; 
             display: flex;
             flex-direction: column;
         }
 
-        #slide-04 {
+        #slide-content {
             height: 100%;
             width: 100%;
             display: flex;
             flex-direction: column;
-            max-width: 100%; /* Pojistka */
+            max-width: 100%;
         }
 
-        /* HLAVNÍ NADPIS */
         h1 {
             color: var(--text-color);
             text-transform: uppercase;
@@ -65,29 +61,29 @@
             flex-shrink: 0; 
             text-shadow: 0 4px 8px rgba(0,0,0,0.6);
             width: 100%;
+            /* Pojistka pro dlouhý nadpis */
+            white-space: normal;
+            word-wrap: break-word;
         }
 
-        /* HLAVNÍ KONTEJNER */
         .app-grid {
             display: flex;
             flex-direction: column;
             gap: 1.5vh; 
             flex: 1; 
             width: 100%;
-            /* Zarovnání obsahu */
-            justify-content: flex-start;
         }
 
         /* --- STYL ŘAD (ROWS) --- */
         .row {
             display: flex;
             width: 100%;
-            gap: 1.5vh; 
-            /* Pojistka pro řádky */
+            gap: 1vw; /* Mezera mezi cihlami procentuálně k šířce, ne výšce */
             max-width: 100%;
+            /* Důležité: nedovolíme přetečení */
+            min-width: 0; 
         }
 
-        /* Výšky řad - poměrově */
         .row-1 { flex: 9; } 
         .row-2 { flex: 6; } 
         .row-3 { flex: 6; } 
@@ -104,59 +100,58 @@
             align-items: center;
             border-radius: 12px; 
             position: relative;
-            box-shadow: 
-                inset 0 0 30px rgba(0,0,0,0.6),
-                0 4px 15px rgba(0,0,0,0.5);
-            padding: 0 10px;
-            /* Pojistka proti přetečení obsahu */
-            min-width: 0;
-            overflow: hidden;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 4px 15px rgba(0,0,0,0.5);
+            padding: 0 5px; /* Menší vnitřní odsazení */
+            
+            /* KLÍČOVÉ OPRAVY PROTI PŘETÉKÁNÍ: */
+            min-width: 0; /* Umožní prvku se zmenšit pod velikost obsahu */
+            overflow: hidden; /* Co se nevejde, to se skryje (jako pojistka) */
         }
 
-        /* OBSAH CIHLY */
         .tile-content {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
             width: 100%;
-            gap: 1.5vw; 
+            gap: 1vw; 
+            /* Zajistí, že obsah nebude širší než rodič */
+            max-width: 100%;
         }
 
-        /* Číslo pořadí */
         .rank {
             font-weight: 800;
             color: #ffffff;
             line-height: 1;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            flex-shrink: 0; /* Číslo se nesmí smrsknout */
+            flex-shrink: 0; 
         }
 
-        /* Text aplikace */
+        /* --- TADY BYL PROBLÉM --- */
         .text {
             font-weight: 800; 
             text-transform: uppercase;
             color: #ffffff;
-            letter-spacing: 1px;
-            white-space: nowrap; 
+            letter-spacing: 0.5px; /* Trochu ubráno */
+            
+            /* ZMĚNA: Povolíme zalamování textu, aby neroztahoval box */
+            white-space: normal; 
+            word-wrap: break-word; 
+            text-align: left; /* Zarovnání doleva vypadá lépe, když se to zalomí */
+            
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            /* Pokud je text moc dlouhý, nebude roztahovat buňku, ale škálovat se */
-            overflow: visible; 
+            min-width: 0; /* Flexbox fix */
         }
 
-        /* --- AGRESIVNÍ ZVĚTŠENÍ PÍSMA (vše v % výšky okna - vh) --- */
-        
-        /* Řada 1 (TOP) */
+        /* --- VELIKOSTI PÍSMA --- */
         .row-1 .rank { font-size: 10vh; }    
-        .row-1 .text { font-size: 5.5vh; }   
+        .row-1 .text { font-size: 5.5vh; line-height: 1.1; }   
 
-        /* Řada 2 (MIDDLE) */
         .row-2 .rank { font-size: 7vh; }     
-        .row-2 .text { font-size: 3.5vh; }   
+        .row-2 .text { font-size: 3.0vh; line-height: 1.1; } /* Mírně zmenšeno */
 
-        /* Řada 3 (BOTTOM) */
         .row-3 .rank { font-size: 5vh; }     
-        .row-3 .text { font-size: 2.5vh; }   
+        .row-3 .text { font-size: 2.2vh; line-height: 1.1; }   
 
         /* Patička */
         .limit-bar {
@@ -166,24 +161,25 @@
             border: 2px dashed var(--brick-color); 
             color: #ffffff; 
             font-weight: 700;
-            font-size: 2.2vh; 
+            font-size: 2vh; 
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 8px;
             text-align: center;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            
             /* Pojistka pro text patičky */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            padding: 0 10px;
         }
     </style>
 </head>
 <body>
-    <section id="slide-04">
+    <section id="slide-content">
         <h1>Visual Design of the Tool Based on First Principles</h1>
         <div class="app-grid">
             
@@ -215,26 +211,25 @@
                 <div class="app-tile">
                     <div class="tile-content">
                         <span class="rank">4.</span>
-                        <span class="text">FOURTH APPLICATION 2%</span>
-                    </div>
+                        <span class="text">FOURTH APP 2%</span> </div>
                 </div>
                 <div class="app-tile">
                     <div class="tile-content">
                         <span class="rank">5.</span>
-                        <span class="text">FIFTH APPLICATION 2%</span>
+                        <span class="text">FIFTH APP 2%</span>
                     </div>
                 </div>
                 <div class="app-tile">
                     <div class="tile-content">
                         <span class="rank">6.</span>
-                        <span class="text">SIXTH APPLICATION 1%</span>
+                        <span class="text">SIXTH APP 1%</span>
                     </div>
                 </div>
             </div>
 
             <div class="row row-4">
                 <div class="limit-bar">
-                    ▼ 7. LIMIT, REDUCTION OF VARIATION AND OPTIONS - ALL OTHER APPLICATIONS < 1% ▼
+                    ▼ 7. LIMIT, REDUCTION OF VARIATION - OTHERS < 1% ▼
                 </div>
             </div>
 
