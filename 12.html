@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 9 - Warehouse Apps (Massive Brick Fonts)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* DEFINICE BAREV */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+            --active-color: #ff4500;
+            --phone-border: #1a1a1a;
+            --app-bg: #050505;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 2.5vw 0 2.5vw;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* HLAVNÍ NADPIS - beze změny */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3.8vh;
+            margin: 0;
+            letter-spacing: 1px;
+            text-align: center;
+            flex-shrink: 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+            height: 5vh;
+        }
+
+        /* ROZLOŽENÍ DVA SLOUPCE */
+        .layout-container {
+            display: flex;
+            flex-direction: row;
+            gap: 4vw;
+            width: 100%;
+            height: calc(91vh - 2vh);
+            align-items: stretch;
+            padding-bottom: 2vh;
+            box-sizing: border-box;
+        }
+
+        /* --- LEVÁ ČÁST: KONTEXT A APPKY --- */
+        .context-column {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 5vh;
+            height: 100%;
+            padding-bottom: 2vh;
+        }
+
+        /* Horní box s kontextem - beze změny */
+        .context-brick {
+            border-left: 0.8vh solid var(--brick-color);
+            padding-left: 1.5vw;
+            text-align: left;
+        }
+
+        .context-title {
+            font-size: 3.5vh;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1vh;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .context-text {
+            font-size: 2.7vh;
+            line-height: 1.4;
+            color: #dddddd;
+            margin-bottom: 0;
+        }
+
+        /* --- MŘÍŽKA APLIKACÍ --- */
+        .app-grid-container {
+            width: 100%;
+        }
+        
+        .section-subtitle {
+            font-size: 2.5vh;
+            font-weight: 700;
+            color: var(--brick-color);
+            text-transform: uppercase;
+            margin-bottom: 1.5vh;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 0.5vh;
+            display: inline-block;
+        }
+
+        .mini-bricks-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5vh;
+            width: 100%;
+        }
+
+        .mini-brick {
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+            border: 2px solid var(--brick-color);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1vh;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        /* --- ZMĚNY VELIKOSTÍ PÍSMA V LEVÝCH DLAŽDICÍCH --- */
+        .mini-brick-icon {
+            font-size: 3.8vh; /* Výrazně zvětšeno (bylo 3.3) */
+            min-width: 4.5vh;
+            text-align: center;
+        }
+
+        .mini-brick-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mini-brick-title {
+            font-size: 2.6vh; /* Výrazně zvětšeno (bylo 2.1) */
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .mini-brick-desc {
+            font-size: 2.2vh; /* Výrazně zvětšeno (bylo 1.7) */
+            color: #ccc;
+            line-height: 1.2;
+            margin-top: 0.3vh;
+        }
+        /* -------------------------------------------------- */
+
+
+        /* --- PRAVÁ ČÁST: TELEFON - beze změny --- */
+        .phone-column {
+            flex: 0.9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100%;
+        }
+
+        /* Rámeček telefonu */
+        .phone-mockup {
+            margin-top: 4vh;
+            height: calc(100% - 4vh);
+            width: auto;
+            aspect-ratio: 9 / 16;
+            border: 1.5vh solid var(--phone-border);
+            border-radius: 4vh;
+            background-color: var(--app-bg);
+            padding: 2vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .phone-mockup::before {
+            content: "";
+            position: absolute;
+            top: 1.5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 0.8vh;
+            background-color: #222;
+            border-radius: 1vh;
+            z-index: 10;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2vh;
+            margin-bottom: 1.5vh;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1vh;
+            flex-shrink: 0;
+        }
+
+        .user-info { font-size: 2.5vh; font-weight: 700; color: #bbb; display: flex; align-items: center; }
+        .back-arrow { margin-right: 1vh; font-size: 2.8vh; }
+
+        .app-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2vh;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .app-btn {
+            border: 0.4vh solid var(--brick-color);
+            border-radius: 2vh;
+            background: rgba(30, 30, 30, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0.5vh;
+            min-height: 0;
+            position: relative;
+        }
+
+        .btn-active-mission {
+            border-color: var(--active-color);
+            background: linear-gradient(145deg, rgba(60, 20, 0, 0.8), rgba(30, 10, 0, 0.8));
+            box-shadow: inset 0 0 15px rgba(255, 69, 0, 0.3);
+        }
+        .btn-active-mission .btn-title { color: var(--active-color); }
+
+        .btn-title { font-weight: 800; text-transform: uppercase; font-size: 2.8vh; margin-bottom: 0.5vh; line-height: 1; }
+        .btn-details { font-size: 1.9vh; color: #ccc; line-height: 1.3; margin-bottom: 0.5vh; white-space: pre-wrap; font-weight: 400; }
+        .btn-icon { font-size: 5vh; margin-top: auto; }
+
+        .btn-large {
+            flex: 2.5;
+            align-items: flex-start;
+            text-align: left;
+            padding-left: 2vh;
+        }
+        .btn-large .btn-icon {
+            position: absolute;
+            right: 2vh;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 7vh;
+            opacity: 0.8;
+        }
+        .btn-large .btn-title { font-size: 3.3vh; }
+
+        .btn-row-2 { display: flex; gap: 1.2vh; flex: 1.5; }
+        .btn-half { flex: 1; }
+        .btn-half .btn-title { font-size: 2.3vh; }
+
+        .btn-row-3 { display: flex; gap: 1.2vh; flex: 1.2; }
+        .btn-third { flex: 1; }
+        .btn-third .btn-title { font-size: 1.9vh; }
+        .btn-third .btn-icon { font-size: 3.3vh; }
+
+        .app-footer {
+            margin-top: 1.5vh;
+            text-align: center;
+            font-size: 2.3vh;
+            color: var(--brick-color);
+            font-weight: 800;
+            border-top: 2px solid #333;
+            padding-top: 1.5vh;
+            flex-shrink: 0;
+            letter-spacing: 1.5px;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="slide-09">
+        <h1>Scale x Warehouse Worker & Forklift Driver</h1>
+
+        <div class="layout-container">
+            
+            <div class="context-column">
+                
+                <div class="context-brick">
+                    <div class="context-title">Work Context</div>
+                    <div class="context-text">
+                        Sits in the forklift cabin, moves between racks and the loading dock. One hand on the wheel, the other operating the scanner. Cannot write or read while driving.
+                    </div>
+                </div>
+
+                <div class="app-grid-container">
+                    <div class="section-subtitle">MOBILE APPLICATIONS</div>
+                    <div class="mini-bricks-grid">
+                        
+                        <div class="mini-brick">
+                            <div class="mini-brick-icon">🚜</div>
+                            <div class="mini-brick-content">
+                                <div class="mini-brick-title">WMS TERMINAL</div>
+                                <div class="mini-brick-desc">Transport orders</div>
+                            </div>
+                        </div>
+
+                        <div class="mini-brick">
+                            <div class="mini-brick-icon">🚛</div>
+                            <div class="mini-brick-content">
+                                <div class="mini-brick-title">LOADING PLAN</div>
+                                <div class="mini-brick-desc">Truck queue</div>
+                            </div>
+                        </div>
+
+                        <div class="mini-brick">
+                            <div class="mini-brick-icon">🗺️</div>
+                            <div class="mini-brick-content">
+                                <div class="mini-brick-title">YARD MAP</div>
+                                <div class="mini-brick-desc">Site navigation</div>
+                            </div>
+                        </div>
+
+                        <div class="mini-brick">
+                            <div class="mini-brick-icon">⚙️</div>
+                            <div class="mini-brick-content">
+                                <div class="mini-brick-title">CHECKLIST</div>
+                                <div class="mini-brick-desc">Forklift check</div>
+                            </div>
+                        </div>
+
+                        <div class="mini-brick">
+                            <div class="mini-brick-icon">🔍</div>
+                            <div class="mini-brick-content">
+                                <div class="mini-brick-title">SCANNER</div>
+                                <div class="mini-brick-desc">Code verification</div>
+                            </div>
+                        </div>
+
+                        <div class="mini-brick">
+                            <div class="mini-brick-icon">📊</div>
+                            <div class="mini-brick-content">
+                                <div class="mini-brick-title">PERFORMANCE</div>
+                                <div class="mini-brick-desc">My daily report</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-column">
+                <div class="phone-mockup">
+                    
+                    <div class="app-header">
+                        <span class="user-info"><span class="back-arrow">←</span> John Doe | Warehouseman</span>
+                        <span style="color: var(--active-color);">↑</span> 
+                    </div>
+
+                    <div class="app-grid">
+                        
+                        <div class="app-btn btn-large btn-active-mission">
+                            <div class="btn-title">1. WMS TERMINAL</div>
+                            <div class="btn-details">TASK: Line 1 → Sector B-24
+MATERIAL: Pallet Porotherm 44
+STATUS: Awaiting Pickup</div>
+                            <div class="btn-icon">🚜</div> 
+                        </div>
+
+                        <div class="btn-row-2">
+                            <div class="app-btn btn-half">
+                                <div class="btn-title">2. LOADING PLAN</div>
+                                <div class="btn-details">Waiting: Scania (Plate...)
+20 pallets</div>
+                                <div class="btn-icon">🚛</div>
+                            </div>
+                            <div class="app-btn btn-half">
+                                <div class="btn-title">3. YARD MAP</div>
+                                <div class="btn-details">Occupancy 82%
+Free sector C-12</div>
+                                <div class="btn-icon">🗺️</div>
+                            </div>
+                        </div>
+
+                        <div class="btn-row-3">
+                            <div class="app-btn btn-third">
+                                <div class="btn-title">4. CHECKLIST</div>
+                                <div class="btn-details">Morning check</div>
+                                <div class="btn-icon">⚙️</div>
+                            </div>
+                            <div class="app-btn btn-third">
+                                <div class="btn-title">5. SCANNER</div>
+                                <div class="btn-details">Verify pallet</div>
+                                <div class="btn-icon">🔍</div>
+                            </div>
+                            <div class="app-btn btn-third">
+                                <div class="btn-title">6. PERFORMANCE</div>
+                                <div class="btn-details">Moved: 45</div>
+                                <div class="btn-icon">📊</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="app-footer">
+                        ▼ ALL APPLICATIONS ▼
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>

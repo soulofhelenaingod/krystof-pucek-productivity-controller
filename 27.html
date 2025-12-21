@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 19 - Module Placement Concept</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR DEFINITIONS */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+            --monitor-frame: #333333; /* Monitor frame color */
+            --screen-bg: #000000;     /* Screen area */
+            --launcher-bg: #1a1a1a;   /* Launcher background */
+            --brick-bg: #2a2a2a;      /* Brick background */
+            --accent-color: #ff6600;  /* Orange for highlights */
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 2.5vw 2vh 2.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* MAIN HEADING - CENTERED (+2PT) */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: calc(3.8vh + 2pt); 
+            margin: 0;
+            margin-bottom: 2vh; 
+            letter-spacing: 1px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        /* MAIN CONTAINER */
+        .layout-container {
+            display: flex;
+            flex: 1; 
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* MONITOR SIMULATION */
+        .monitor-frame {
+            width: 90%;
+            aspect-ratio: 16 / 9; 
+            background-color: var(--monitor-frame); 
+            border-radius: 2vh;
+            padding: 4vh; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            display: flex;
+        }
+
+        .monitor-screen {
+            flex: 1;
+            background-color: var(--screen-bg);
+            border: 0.2vh solid #111;
+            position: relative; 
+        }
+
+        .menu-icon {
+            position: absolute;
+            top: 1vh;
+            right: 1.5vh;
+            color: #888;
+            font-size: 3vh;
+            cursor: pointer;
+        }
+
+        /* APP LAUNCHER PANEL */
+        .app-launcher {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 28vw; 
+            background-color: var(--launcher-bg);
+            border-left: 0.2vh solid #333;
+            border-bottom: 0.2vh solid #333;
+            border-bottom-left-radius: 1vh;
+            padding: 2vh; 
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh; 
+            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .launcher-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1vh;
+            border-bottom: 0.2vh solid #333;
+            margin-bottom: 0.5vh;
+        }
+        
+        .header-title {
+            font-size: 1.8vh; 
+            font-weight: 600;
+            color: #ddd;
+            text-transform: uppercase;
+        }
+        
+        .header-icon {
+            font-size: 2vh; color: #ccc;
+        }
+
+        /* BRICK LAYOUT */
+        .brick-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+            width: 100%;
+        }
+
+        .brick-row {
+            display: flex;
+            gap: 1vh;
+        }
+
+        .app-brick {
+            height: 9vh; 
+            border: 0.3vh solid var(--accent-color);
+            background-color: var(--brick-bg);
+            border-radius: 1vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0.5vh;
+            color: var(--text-color);
+            flex: 1;
+            position: relative;
+        }
+        
+        /* LARGE BRICK (1.) - MES (+2PT) */
+        .brick-large {
+            height: 14vh;
+            flex: 1 100%;
+            align-items: center; 
+            padding: 1.5vh;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+        }
+        
+        .kpi-title {
+            font-size: calc(1.4vh + 2pt);
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5vh;
+            text-transform: uppercase;
+        }
+
+        .dashboard-text {
+            font-size: calc(2.2vh + 2pt);
+            font-weight: 800;
+            color: var(--text-color);
+            line-height: 1.2;
+        }
+        
+        .dashboard-sub {
+            font-size: calc(1.4vh + 2pt);
+            color: #aaa;
+            margin-top: 0.5vh;
+        }
+
+        .large-icon {
+            position: absolute;
+            right: 1.5vh;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 5vh;
+            color: var(--accent-color);
+            opacity: 0.2;
+        }
+
+        /* SMALL BRICK CONTENT (+2PT) */
+        .brick-icon {
+            font-size: 2.5vh;
+            color: var(--accent-color);
+            margin-bottom: 0.5vh;
+        }
+        
+        .module-title {
+            font-size: calc(1.4vh + 2pt);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .brick-percentage {
+            font-size: 1.2vh;
+            color: #888;
+            margin-top: 0.3vh;
+        }
+
+        /* FOOTER (7.) */
+        .brick-footer {
+            height: 5vh;
+            flex: 1 100%;
+            font-size: 1.2vh;
+            font-weight: 600;
+            color: #888;
+            border: 0.2vh solid #444;
+            background-color: #111;
+            text-transform: uppercase;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="slide-19">
+        <h1>MODULE PLACEMENT ON COMPUTER</h1>
+
+        <div class="layout-container">
+            <div class="monitor-frame">
+                <div class="menu-icon">☰</div>
+                
+                <div class="monitor-screen">
+                    
+                    <div class="app-launcher">
+                        <div class="launcher-header">
+                            <span class="header-title">PRODUCTION PANEL</span>
+                            <span class="header-icon">☰</span>
+                        </div>
+                        <div class="brick-grid">
+                            
+                            <div class="app-brick brick-large">
+                                <div class="kpi-title">1. MAIN SYSTEM (80%)</div>
+                                <div class="dashboard-text">MES / SCADA<br>CONTROL</div>
+                                <div class="dashboard-sub">Real-time line control</div>
+                                <div class="large-icon">🏭</div>
+                            </div>
+                            
+                            <div class="brick-row">
+                                <div class="app-brick" style="flex: 1.5;">
+                                    <span class="brick-icon">📂</span>
+                                    <span class="kpi-title" style="color: #fff; font-size: 1.2vh;">2. ERP (10%)</span>
+                                    <span class="module-title">SAP / ORDERS</span>
+                                </div>
+                                <div class="app-brick" style="flex: 1;">
+                                    <span class="brick-icon">👥</span>
+                                    <span class="kpi-title" style="color: #fff; font-size: 1.2vh;">3. HR (5%)</span>
+                                    <span class="module-title">ATTENDANCE</span>
+                                </div>
+                            </div>
+                            
+                            <div class="brick-row">
+                                <div class="app-brick">
+                                    <span class="brick-icon">✅</span>
+                                    <span class="module-title">QMS</span>
+                                    <span class="brick-percentage">QUALITY</span>
+                                </div>
+                                <div class="app-brick">
+                                    <span class="brick-icon">🔧</span>
+                                    <span class="module-title">CMMS</span>
+                                    <span class="brick-percentage">MAINTENANCE</span>
+                                </div>
+                                <div class="app-brick">
+                                    <span class="brick-icon">📊</span>
+                                    <span class="module-title">BI</span>
+                                    <span class="brick-percentage">REPORTS</span>
+                                </div>
+                            </div>
+
+                            <div class="app-brick brick-footer">
+                                7. OTHERS (MAIL, TEAMS, WEB) &lt;1%
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

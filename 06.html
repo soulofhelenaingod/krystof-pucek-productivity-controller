@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 4 - Visual Design Big Fonts</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DEFINICE BAREV */
+        :root {
+            /* Updated Background Color */
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+        }
+
+        html, body {
+            height: 100%; 
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            /* Background Gradient application */
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px 40px 15px 40px; 
+            box-sizing: border-box;
+        }
+
+        #slide-04 {
+            height: 100%;           
+            display: flex;          
+            flex-direction: column; 
+        }
+
+        /* HLAVNÍ NADPIS */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 4vh; /* Zvětšeno pro lepší proporce k obsahu */
+            margin-top: 0;
+            margin-bottom: 2vh;
+            letter-spacing: 0.5px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+        }
+
+        /* HLAVNÍ KONTEJNER */
+        .app-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh; /* Mezery se nyní škálují podle výšky */
+            flex: 1; 
+            width: 100%;
+        }
+
+        /* --- STYL ŘAD (ROWS) --- */
+        .row {
+            display: flex;
+            width: 100%;
+            gap: 1.5vh; 
+        }
+
+        /* Výšky řad - poměrově */
+        .row-1 { flex: 9; } 
+        .row-2 { flex: 6; } 
+        .row-3 { flex: 6; } 
+        .row-4 { flex: 1.2; min-height: 40px; } 
+
+        /* --- STYL PRVKŮ (CIHEL) --- */
+        .app-tile {
+            flex: 1; 
+            border: 3px solid var(--brick-color);
+            /* Updated background to match previous slides (slightly opaque for contrast against blue) */
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(10, 10, 10, 0.95));
+            display: flex;
+            flex-direction: row; 
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px; /* Trochu kulatější rohy */
+            position: relative;
+            box-shadow: 
+                inset 0 0 30px rgba(0,0,0,0.6),
+                0 4px 15px rgba(0,0,0,0.5);
+            padding: 0 10px;
+        }
+
+        /* OBSAH CIHLY */
+        .tile-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 1.5vw; /* Mezera mezi číslem a textem se přizpůsobuje šířce */
+        }
+
+        /* Číslo pořadí */
+        .rank {
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1;
+            /* Stín pro lepší čitelnost */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Text aplikace */
+        .text {
+            font-weight: 800; /* Extra tučné */
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 1px;
+            white-space: nowrap; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* --- AGRESIVNÍ ZVĚTŠENÍ PÍSMA (vše v % výšky okna - vh) --- */
+        
+        /* Řada 1 (TOP) */
+        .row-1 .rank { font-size: 10vh; }    /* Bylo 5vh */
+        .row-1 .text { font-size: 5.5vh; }   /* Bylo 3vh */
+
+        /* Řada 2 (MIDDLE) */
+        .row-2 .rank { font-size: 7vh; }     /* Bylo 3.5vh */
+        .row-2 .text { font-size: 3.5vh; }   /* Bylo 1.8vh */
+
+        /* Řada 3 (BOTTOM) */
+        .row-3 .rank { font-size: 5vh; }     /* Bylo 3vh */
+        .row-3 .text { font-size: 2.5vh; }   /* Bylo 1.5vh */
+
+        /* Patička */
+        .limit-bar {
+            width: 100%;
+            height: 100%;
+            background: rgba(178, 34, 34, 0.35); /* Trochu tmavší pozadí pro lepší kontrast proti modré */
+            border: 2px dashed var(--brick-color); 
+            color: #ffffff; 
+            font-weight: 700;
+            font-size: 2.2vh; /* Zvětšeno */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <section id="slide-04">
+        <h1>Visual Design of the Tool Based on First Principles</h1>
+
+        <div class="app-grid">
+            
+            <div class="row row-1">
+                <div class="app-tile">
+                    <div class="tile-content">
+                        <span class="rank">1.</span>
+                        
+                        <span class="text">MOST PRODUCTIVE APPLICATION 80% UTILIZATION</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-2">
+                <div class="app-tile">
+                    <div class="tile-content">
+                        <span class="rank">2.</span>
+                        <span class="text">SECOND APPLICATION 10% UTILIZATION</span>
+                    </div>
+                </div>
+                <div class="app-tile">
+                    <div class="tile-content">
+                        <span class="rank">3.</span>
+                        <span class="text">THIRD APPLICATION 5% UTILIZATION</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-3">
+                <div class="app-tile">
+                    <div class="tile-content">
+                        <span class="rank">4.</span>
+                        <span class="text">FOURTH APPLICATION 2%</span>
+                    </div>
+                </div>
+                <div class="app-tile">
+                    <div class="tile-content">
+                        <span class="rank">5.</span>
+                        <span class="text">FIFTH APPLICATION 2%</span>
+                    </div>
+                </div>
+                <div class="app-tile">
+                    <div class="tile-content">
+                        <span class="rank">6.</span>
+                        <span class="text">SIXTH APPLICATION 1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-4">
+                <div class="limit-bar">
+                    ▼ 7. LIMIT, REDUCTION OF VARIATION AND OPTIONS - ALL OTHER APPLICATIONS < 1% ▼
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

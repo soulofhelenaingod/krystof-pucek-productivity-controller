@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 24 - Technology Integration (Pure White)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR PALETTE */
+        :root {
+            --bg-color: #370090;      
+            --accent-color: #ffaa00; 
+            --text-white: #ffffff; 
+            
+            /* Dark "blackish" background for bricks */
+            --brick-bg-start: rgba(10, 10, 10, 0.9);
+            --brick-bg-end: rgba(25, 25, 25, 0.95);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% 0%, #4a1cb0 0%, var(--bg-color) 80%);
+            color: var(--text-white);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 4vw 3vh 4vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MAIN HEADING - CENTERED */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 600; 
+            font-size: calc(4.2vh + 2pt); 
+            margin: 0 0 2.5vh 0;
+            text-align: center; 
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.5);
+            color: var(--text-white);
+        }
+
+        /* PILLAR CONTAINER */
+        .pillar-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1; 
+            width: 100%;
+            gap: 2.5vh; 
+        }
+
+        /* INDIVIDUAL PILLAR (BRICK) */
+        .pillar-row {
+            display: flex;
+            align-items: center; 
+            background: linear-gradient(90deg, var(--brick-bg-start), var(--brick-bg-end));
+            border: 0.35vh solid var(--accent-color);
+            border-radius: 1.5vh;
+            padding: 0 4vw;
+            flex: 1; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .pillar-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .pillar-title {
+            font-size: calc(3.2vh + 2pt); 
+            font-weight: 600; 
+            text-transform: uppercase;
+            color: var(--text-white); 
+            margin-bottom: 1vh;
+            border-bottom: 0.3vh solid rgba(255,255,255,0.2);
+            padding-bottom: 0.8vh;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .pillar-desc {
+            font-size: calc(2.5vh + 2pt); 
+            font-weight: 400; 
+            color: var(--text-white); 
+            line-height: 1.3;
+        }
+
+        .tech-list {
+            margin-top: 1.2vh;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .tech-list li {
+            font-size: calc(2.2vh + 2pt); 
+            font-weight: 400; 
+            color: var(--text-white); 
+            margin-bottom: 0.5vh;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+
+        .tech-list li::before {
+            content: "›";
+            font-weight: 400; 
+            color: var(--accent-color); 
+            margin-right: 1.5vh;
+            font-size: 3.5vh;
+            line-height: 1;
+            flex-shrink: 0; 
+        }
+
+        .warning-text {
+            color: var(--text-white); 
+            font-weight: 600; 
+            background: rgba(255, 50, 50, 0.3); 
+            padding: 0.2vh 1vh;
+            border-radius: 0.5vh;
+            display: inline-block;
+            margin-top: 1vh;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Which Technologies to Integrate and Which to Limit?</h1>
+
+    <div class="pillar-container">
+        
+        <div class="pillar-row">
+            <div class="pillar-content">
+                <div class="pillar-title">Identity & Access (OpenID Connect)</div>
+                <div class="pillar-desc">
+                    Ensures seamless automatic login and high-level security. Differentiates roles (e.g., Foreman vs. Worker).
+                    <ul class="tech-list">
+                        <li>Target Systems: Google Cloud Identity / Keycloak / Microsoft Entra Identity</li>
+                        <li>Integration: OpenID Connect / OAuth 2.0 protocols</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="pillar-row">
+            <div class="pillar-content">
+                <div class="pillar-title">Backend for Frontend (BFF)</div>
+                <div class="pillar-desc">
+                    "Headless ERP" architecture. The user never interacts directly with SAP. The ERP serves strictly as a background data source.
+                    <br>
+                    <span class="warning-text">⚠️ LIMITATION: Never use full ERP interfaces!</span> They are productivity killers in a production environment.
+                </div>
+            </div>
+        </div>
+
+        <div class="pillar-row">
+            <div class="pillar-content">
+                <div class="pillar-title">IoT & Live Status</div>
+                <div class="pillar-desc">
+                    Icons must not be static. They must transmit floor-level reality to the device (e.g., overheating, active faults).
+                    <ul class="tech-list">
+                        <li>Hardware: Siemens Simatic, Allen-Bradley, SCADA systems</li>
+                        <li>Protocols: MQTT, OPC UA (Open Platform Communications)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

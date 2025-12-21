@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 5 - User Centric Design (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DEFINICE BAREV */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 30px 50px; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* HLAVNÍ KONTEJNER */
+        .slide-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            gap: 20px; 
+        }
+
+        /* SEKCE NADPISU */
+        .header-section {
+            text-align: center;
+            flex-shrink: 0;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3rem; 
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* HLAVNÍ BOX S BODY */
+        .content-brick {
+            flex: 1; 
+            border: 4px solid var(--brick-color);
+            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(10, 10, 10, 0.95));
+            padding: 40px 50px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 0 20px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+        }
+
+        /* STYL SEZNAMU */
+        .points-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+        }
+
+        .point-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            font-size: 1.3rem; 
+            line-height: 1.5;
+        }
+
+        /* IKONA ODRÁŽKY */
+        .point-icon {
+            min-width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border: 3px solid var(--brick-color);
+            margin-top: 6px; 
+            box-shadow: 0 0 8px rgba(178, 34, 34, 0.8);
+            flex-shrink: 0;
+        }
+
+        .highlight {
+            font-weight: 800;
+            color: #ffffff;
+            font-size: 1.35rem; 
+        }
+
+        /* TEXT DESCRIPTION */
+        .description {
+            color: #dddddd;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* SPODNÍ BOX (FOOTER) */
+        .footer-brick {
+            flex-shrink: 0;
+            border: 2px solid #ffffff; 
+            border-radius: 12px;
+            background: rgba(178, 34, 34, 0.25); 
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.5;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-text {
+            color: #f0f0f0;
+        }
+
+        .footer-highlight {
+            color: #76c000; 
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        
+        <div class="header-section">
+            <h1>Understanding the Users</h1>
+            <div class="subtitle">Answering the question: "Who is it for?"</div>
+        </div>
+
+        <div class="content-brick">
+            <ul class="points-list">
+                <li class="point-item">
+                    <div class="point-icon"></div>
+                    <div>
+                        <span class="highlight">The user is the one who spends the most time and effort working with the tool.</span>
+                        <span class="description">Their efficiency multiplied by the number of users = <strong>HIGHEST PRIORITY AND ROI.</strong></span>
+                    </div>
+                </li>
+                <li class="point-item">
+                    <div class="point-icon"></div>
+                    <div>
+                        <span class="highlight">Designing from "backend forward" does not work.</span>
+                        <span class="description">Backend designers/developers are not the end-users who request specific UX/UI. Their technical worldview often clashes with the mental models and needs of the general employee base.</span>
+                    </div>
+                </li>
+                <li class="point-item">
+                    <div class="point-icon"></div>
+                    <div>
+                        <span class="highlight">Management's Vision vs. Reality "In the Trenches".</span>
+                        <span class="description">If management is disconnected from the practical daily reality of workers, their ideas about tool functionality often create friction and unusable processes.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-brick">
+            <span class="footer-text">
+                (Scalability Principle): 
+                <span class="footer-highlight">Potential for implementation across various entities:</span> 
+                The tool must be prepared for thousands of collaborators across different countries. 
+                Diverse "data sets," quantities, roles, and languages require a <strong>universal axiomatic foundation</strong>, rather than a solution "tailor-made" for a single group.
+            </span>
+        </div>
+
+    </div>
+
+</body>
+</html>

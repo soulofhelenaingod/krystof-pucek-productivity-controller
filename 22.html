@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 15 - Shift Leader Detail (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR DEFINITIONS */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+            --kpi-good: #00cc66;       /* Green - Performance/Quality */
+            --kpi-warning: #ffaa00;    /* Orange - Trend */
+            --kpi-bad: #cc0000;        /* Red - Critical Level/Availability */
+            --phone-border: #1a1a1a;
+            --app-bg: #050505;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 2.5vw 0 2.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* MAIN HEADING - CENTERED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3.8vh; 
+            margin: 0;
+            letter-spacing: 1px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+            height: 5vh; 
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .layout-container {
+            display: flex;
+            flex-direction: row;
+            gap: 4vw; 
+            width: 100%;
+            height: calc(91vh - 2vh); 
+            align-items: stretch; 
+            padding-bottom: 2vh; 
+            box-sizing: border-box;
+        }
+
+        /* --- LEFT SIDE: DESCRIPTION (CALC + 2PT INCREASE) --- */
+        .context-column {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: flex-start;
+            gap: 8vh; 
+            height: 100%;
+            padding-bottom: 2vh; 
+        }
+
+        .context-brick {
+            border-left: 1vh solid var(--kpi-good); 
+            padding-left: 1.5vw;
+            text-align: left; 
+            width: 100%;
+        }
+
+        .context-title {
+            font-size: calc(3.8vh + 2pt); 
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1.5vh;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .context-text {
+            font-size: calc(2.9vh + 2pt); 
+            line-height: 1.4;
+            color: #dddddd;
+            margin-bottom: 0;
+        }
+
+        .tasks-list {
+            list-style: none;
+            padding: 0;
+            margin: 0; 
+            text-align: left; 
+        }
+
+        .tasks-list li {
+            margin-bottom: 1.5vh;
+            padding-left: 2.5vw;
+            position: relative;
+            font-size: calc(2.8vh + 2pt); 
+            line-height: 1.3;
+        }
+
+        .tasks-list li::before {
+            content: "■"; 
+            color: var(--kpi-good); 
+            position: absolute;
+            left: 0;
+            top: 0.5vh;
+            font-size: 2.2vh;
+        }
+
+        /* --- RIGHT SIDE: PHONE --- */
+        .phone-column {
+            flex: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            height: 100%; 
+        }
+
+        .phone-mockup {
+            margin-top: 4vh; 
+            height: calc(100% - 4vh); 
+            width: auto; 
+            aspect-ratio: 9 / 16; 
+            
+            border: 1.5vh solid var(--phone-border);
+            border-radius: 4vh;
+            background-color: var(--app-bg);
+            padding: 2vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        /* Dynamic Island */
+        .phone-mockup::before {
+            content: "";
+            position: absolute;
+            top: 1.5vh; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 0.8vh;
+            background-color: #222;
+            border-radius: 1vh;
+            z-index: 10;
+        }
+
+        /* --- APP UI (SHIFT LEADER) --- */
+        .app-header {
+            margin-top: 2vh;
+            margin-bottom: 1vh;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5vh;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-info { font-size: 1.8vh; color: #ccc; }
+        .user-sub { font-size: 1.2vh; color: #888; }
+        .status-dot { width: 1.2vh; height: 1.2vh; background-color: var(--kpi-good); border-radius: 50%; }
+
+        .app-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh; 
+            flex: 1; 
+            overflow: hidden; 
+        }
+
+        /* OEE DASHBOARD */
+        .app-card-dashboard {
+            flex: 2;
+            border: 0.3vh solid var(--kpi-good); 
+            border-radius: 1.5vh; 
+            background: linear-gradient(160deg, #111, #001a00);
+            padding: 1vh; 
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .dashboard-header {
+            font-size: 1.8vh; font-weight: 800; color: #fff; text-transform: uppercase; margin-bottom: 1vh; letter-spacing: 1px;
+        }
+        
+        .kpi-row {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            flex: 1;
+            align-items: center;
+        }
+        
+        .kpi-gauge {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 30%;
+        }
+        
+        /* Donut chart UI */
+        .donut {
+            width: 6vh; height: 6vh;
+            border-radius: 50%;
+            background: conic-gradient(var(--kpi-good) 0% 91%, #333 91% 100%);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 0.5vh;
+            position: relative;
+        }
+        .donut::after {
+            content: ""; position: absolute; width: 4.5vh; height: 4.5vh; background: #000; border-radius: 50%;
+        }
+        .donut-val {
+            position: absolute; z-index: 2; font-size: 1.4vh; font-weight: bold; color: #fff;
+        }
+        
+        .donut.orange { background: conic-gradient(var(--kpi-good) 0% 99%, #333 99% 100%); }
+        .donut.red { background: conic-gradient(var(--kpi-bad) 0% 85%, #333 85% 100%); }
+        
+        .kpi-label { font-size: 1.2vh; color: #ccc; text-transform: uppercase; }
+
+        /* ROW 2 - TEAM */
+        .row-2 { display: flex; gap: 1vh; flex: 1.2; } 
+        
+        .card-half { 
+            flex: 1; 
+            background: #222;
+            border-radius: 1.5vh;
+            padding: 1vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 0.4vh solid #444;
+        }
+        
+        .card-team { border-color: var(--kpi-warning); }
+        .card-team .title { color: var(--kpi-warning); }
+        
+        .card-critical { border-color: var(--kpi-bad); }
+        .card-critical .title { color: var(--kpi-bad); }
+        
+        .card-half .title { font-size: 1.5vh; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5vh; }
+        .detail-item { font-size: 1.3vh; color: #ccc; margin-bottom: 0.3vh; }
+        .card-icon { font-size: 3vh; margin-top: 0.5vh; }
+
+        /* ROW 3 - BUTTONS */
+        .row-3 { display: flex; gap: 1vh; flex: 1; } 
+        .card-small { 
+            flex: 1; 
+            background: #151515;
+            border: 0.4vh solid var(--brick-color); 
+            border-radius: 1.5vh;
+            padding: 0.5vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+        }
+        
+        .card-small .icon { font-size: 3vh; margin-bottom: 0.2vh; }
+        .card-small .title { font-size: 1.2vh; line-height: 1.1; color: #fff; font-weight: 700; text-transform: uppercase; }
+
+        .app-footer {
+            margin-top: 1vh;
+            text-align: center;
+            font-size: 1.5vh;
+            color: #666;
+            padding-top: 0.5vh;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="slide-15">
+        <h1>Shift Leader (Foreman)</h1>
+
+        <div class="layout-container">
+            
+            <div class="context-column">
+                <div class="context-brick">
+                    <div class="context-title">Work Context</div>
+                    <div class="context-text">
+                        The Shift Leader moves constantly between the production floor and the office. They manage crises, plan fulfillment, and personnel management. Instant data is required for critical decision-making.
+                    </div>
+                </div>
+
+                <div class="context-brick" style="border-left-color: #ffffff;"> 
+                    <div class="context-title">Key Needs (User Stories)</div>
+                    <ul class="tasks-list">
+                        <li>Real-time shift performance (OEE) and attendance overview</li>
+                        <li>Approving leave requests and managing shift swaps</li>
+                        <li>Digital shift handovers and remote task assignments</li>
+                        <li>Monitoring and delegation of high-priority critical tasks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phone-column">
+                <div class="phone-mockup">
+                    
+                    <div class="app-header">
+                        <div class="user-info">
+                            Martin King, MSc. | Shift Master
+                            <div class="user-sub">Status: SHIFT B / ACTIVE</div>
+                        </div>
+                        <div class="status-dot"></div>
+                    </div>
+
+                    <div class="app-grid">
+                        
+                        <div class="app-card-dashboard">
+                            <div class="dashboard-header">SHIFT DASHBOARD (OEE)</div>
+                            
+                            <div class="kpi-row">
+                                <div class="kpi-gauge">
+                                    <div class="donut"><div class="donut-val">91%</div></div>
+                                    <div class="kpi-label">OUTPUT</div>
+                                </div>
+                                <div class="kpi-gauge">
+                                    <div class="donut orange"><div class="donut-val">99%</div></div>
+                                    <div class="kpi-label">QUALITY</div>
+                                </div>
+                                <div class="kpi-gauge">
+                                    <div class="donut red"><div class="donut-val">85%</div></div>
+                                    <div class="kpi-label">AVAIL.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-2">
+                            <div class="card-half card-team">
+                                <div class="title">TEAM STATUS</div>
+                                <div class="detail-item">Attendance: 28/30</div>
+                                <div class="detail-item">On Leave: 2</div>
+                                <div class="card-icon">🧑‍🤝‍🧑</div>
+                            </div>
+                            <div class="card-half card-critical">
+                                <div class="title">CRITICAL TASKS</div>
+                                <div class="detail-item">Press Failure</div>
+                                <div class="detail-item">Req: Maintenance</div>
+                                <div class="card-icon">🚨</div>
+                            </div>
+                        </div>
+
+                        <div class="row-3">
+                            <div class="card-small">
+                                <div class="icon">💬</div>
+                                <div class="title">TEAM<br>COMMS</div>
+                            </div>
+                            <div class="card-small">
+                                <div class="icon">🚶</div>
+                                <div class="title">GEMBA<br>WALK</div>
+                            </div>
+                            <div class="card-small">
+                                <div class="icon">📝</div>
+                                <div class="title">SHIFT<br>REPORT</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="app-footer">
+                        ▼ ALL APPLICATIONS ▼
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

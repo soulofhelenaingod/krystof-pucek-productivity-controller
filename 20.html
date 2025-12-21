@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 14 - Cleaner Detail (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR DEFINITIONS */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+            --hygiene-color: #00cc66; /* Green for active tasks/check */
+            --phone-border: #1a1a1a;
+            --app-bg: #050505;
+            --map-priority: #ff4500;   /* Red for priority spots */
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 2.5vw 0 2.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* MAIN HEADING - CENTERED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3.8vh; 
+            margin: 0;
+            letter-spacing: 1px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+            height: 5vh; 
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .layout-container {
+            display: flex;
+            flex-direction: row;
+            gap: 4vw; 
+            width: 100%;
+            height: calc(91vh - 2vh); 
+            align-items: stretch; 
+            padding-bottom: 2vh; 
+            box-sizing: border-box;
+        }
+
+        /* --- LEFT SIDE: DESCRIPTION (CALC + 2PT INCREASE) --- */
+        .context-column {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: flex-start;
+            gap: 8vh; 
+            height: 100%;
+            padding-bottom: 2vh; 
+        }
+
+        .context-brick {
+            border-left: 1vh solid var(--hygiene-color); 
+            padding-left: 1.5vw;
+            text-align: left; 
+            width: 100%;
+        }
+
+        .context-title {
+            font-size: calc(3.8vh + 2pt); 
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1.5vh;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .context-text {
+            font-size: calc(2.9vh + 2pt); 
+            line-height: 1.4;
+            color: #dddddd;
+            margin-bottom: 0;
+        }
+
+        .tasks-list {
+            list-style: none;
+            padding: 0;
+            margin: 0; 
+            text-align: left; 
+        }
+
+        .tasks-list li {
+            margin-bottom: 1.5vh;
+            padding-left: 2.5vw;
+            position: relative;
+            font-size: calc(2.8vh + 2pt); 
+            line-height: 1.3;
+        }
+
+        .tasks-list li::before {
+            content: "■"; 
+            color: var(--hygiene-color); 
+            position: absolute;
+            left: 0;
+            top: 0.5vh;
+            font-size: 2.2vh;
+        }
+
+        /* --- RIGHT SIDE: PHONE --- */
+        .phone-column {
+            flex: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            height: 100%; 
+        }
+
+        .phone-mockup {
+            margin-top: 4vh; 
+            height: calc(100% - 4vh); 
+            width: auto; 
+            aspect-ratio: 9 / 16; 
+            
+            border: 1.5vh solid var(--phone-border);
+            border-radius: 4vh;
+            background-color: var(--app-bg);
+            padding: 2vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        /* Dynamic Island */
+        .phone-mockup::before {
+            content: "";
+            position: absolute;
+            top: 1.5vh; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 0.8vh;
+            background-color: #222;
+            border-radius: 1vh;
+            z-index: 10;
+        }
+
+        /* --- APP UI (HYGIENE) --- */
+        .app-header {
+            margin-top: 2vh;
+            margin-bottom: 1vh;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5vh;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-info { font-size: 1.8vh; color: #ccc; }
+        .user-sub { font-size: 1.2vh; color: #888; }
+        .status-dot { width: 1.2vh; height: 1.2vh; background-color: var(--hygiene-color); border-radius: 50%; }
+
+        .app-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh; 
+            flex: 1; 
+            overflow: hidden; 
+        }
+
+        /* ZONE MAP CARD */
+        .app-card-map {
+            flex: 2;
+            border: 0.3vh solid var(--hygiene-color); 
+            border-radius: 1.5vh; 
+            background: linear-gradient(160deg, #111, #051a05); 
+            padding: 1vh; 
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .map-header {
+            font-size: 1.8vh; font-weight: 800; color: var(--hygiene-color); text-transform: uppercase; margin-bottom: 0.5vh;
+        }
+        .map-status {
+            font-size: 1.4vh; color: #ccc; margin-bottom: 1vh;
+        }
+        
+        .map-visual {
+            width: 90%;
+            height: 8vh;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 0.5vh;
+            position: relative;
+            margin-bottom: 1vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .map-zone-active {
+            width: 75%; height: 60%; background: rgba(255, 69, 0, 0.4); border: 2px solid var(--map-priority); border-radius: 0.5vh; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2vh; font-weight: bold;
+        }
+
+        .map-info { font-size: 1.2vh; color: var(--map-priority); font-weight: bold; }
+
+        /* ROW 2 - CARDS */
+        .row-2 { display: flex; gap: 1vh; flex: 1.2; } 
+        .card-half { 
+            flex: 1; 
+            background: #222;
+            border: 0.4vh solid var(--brick-color);
+            border-radius: 1.5vh;
+            padding: 1vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .card-half-title {
+            font-size: 1.5vh; font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 0.5vh;
+        }
+        .detail-item { font-size: 1.3vh; color: #ccc; margin-bottom: 0.3vh; }
+        .card-icon { font-size: 3vh; margin-top: 0.5vh; }
+
+        /* ROW 3 - BUTTONS */
+        .row-3 { display: flex; gap: 1vh; flex: 1; } 
+        .card-small { 
+            flex: 1; 
+            background: #151515;
+            border: 0.4vh solid var(--brick-color); 
+            border-radius: 1.5vh;
+            padding: 0.5vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+        }
+        
+        /* Action Button (Confirm) */
+        .card-action {
+            border-color: var(--hygiene-color);
+            background: rgba(0, 50, 20, 0.3);
+        }
+        .card-action .title { color: var(--hygiene-color); }
+        .card-action .icon { color: var(--hygiene-color); }
+
+        .card-small .icon { font-size: 3vh; margin-bottom: 0.2vh; }
+        .card-small .title { font-size: 1.2vh; line-height: 1.1; color: #fff; font-weight: 700; text-transform: uppercase; }
+
+        .app-footer {
+            margin-top: 1vh;
+            text-align: center;
+            font-size: 1.5vh;
+            color: #666;
+            padding-top: 0.5vh;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="slide-14">
+        <h1>Cleaner & Hygiene Specialist</h1>
+
+        <div class="layout-container">
+            
+            <div class="context-column">
+                <div class="context-brick">
+                    <div class="context-title">Work Context</div>
+                    <div class="context-text">
+                        Moves throughout the entire premises (locker rooms, halls, offices) with a service cart. Hands are often wet or protected by rubber gloves. Needs to easily log completed zones.
+                    </div>
+                </div>
+
+                <div class="context-brick" style="border-left-color: #ffffff;"> 
+                    <div class="context-title">Key Needs (User Stories)</div>
+                    <ul class="tasks-list">
+                        <li>Confirmation of cleaned zones (checklist)</li>
+                        <li>Report faults (e.g., water leaks, broken doors)</li>
+                        <li>Report missing soap/paper/cleaning supplies</li>
+                        <li>Order cleaning supplies from the warehouse</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phone-column">
+                <div class="phone-mockup">
+                    
+                    <div class="app-header">
+                        <div class="user-info">
+                            Jane Doe | Hygiene Specialist
+                            <div class="user-sub">Status: Zone A - In Progress</div>
+                        </div>
+                        <div class="status-dot"></div>
+                    </div>
+
+                    <div class="app-grid">
+                        
+                        <div class="app-card-map">
+                            <div class="map-header">CLEANING PLAN: OFFICES</div>
+                            <div class="map-status">Status: 4/5 CLEANED</div>
+                            
+                            <div class="map-visual">
+                                <div class="map-zone-active">MEETING ROOM (PRIORITY)</div>
+                            </div>
+                            <div class="map-info">FOCUS: TRASH, HANDLES, TABLES</div>
+                        </div>
+
+                        <div class="row-2">
+                            <div class="card-half">
+                                <div class="card-half-title">CHEMISTRY & GUIDE</div>
+                                <div class="detail-item">Surface: Vinyl</div>
+                                <div class="detail-item">Profi-Clean Blue</div>
+                                <div class="card-icon">🧪</div>
+                            </div>
+                            <div class="card-half">
+                                <div class="card-half-title">REPORT FAULT</div>
+                                <div class="detail-item">Photo + Voice</div>
+                                <div class="detail-item">Soap / Paper</div>
+                                <div class="card-icon">📷</div>
+                            </div>
+                        </div>
+
+                        <div class="row-3">
+                            <div class="card-small">
+                                <div class="icon">📅</div>
+                                <div class="title">SCHE<br>DULE</div>
+                            </div>
+                            <div class="card-small card-action">
+                                <div class="icon">✅</div>
+                                <div class="title">CONFIRM<br>CLEANED</div>
+                            </div>
+                            <div class="card-small">
+                                <div class="icon">🛒</div>
+                                <div class="title">ORDER<br>SUPPLIES</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="app-footer">
+                        ▼ ALL APPLICATIONS ▼
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

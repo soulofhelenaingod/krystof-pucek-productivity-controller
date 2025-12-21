@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 11 - Maintenance Detail (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR DEFINITIONS */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+            --alarm-critical: #cc0000;
+            --alarm-warning: #ffaa00; 
+            --phone-border: #1a1a1a;
+            --app-bg: #111111;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 2.5vw 0 2.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* MAIN HEADING - CENTERED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3.8vh; 
+            margin: 0;
+            letter-spacing: 1px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+            height: 5vh; 
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .layout-container {
+            display: flex;
+            flex-direction: row;
+            gap: 4vw; 
+            width: 100%;
+            height: calc(91vh - 2vh); 
+            align-items: stretch; 
+            padding-bottom: 2vh; 
+            box-sizing: border-box;
+        }
+
+        /* --- LEFT SIDE: DESCRIPTION (BIGGER FONTS + 2PT) --- */
+        .context-column {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: flex-start;
+            gap: 8vh; 
+            height: 100%;
+            padding-bottom: 2vh; 
+        }
+
+        .context-brick {
+            border-left: 1vh solid var(--alarm-warning); 
+            padding-left: 1.5vw;
+            text-align: left; 
+            width: 100%;
+        }
+
+        .context-title {
+            font-size: calc(3.8vh + 2pt); 
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1.5vh;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .context-text {
+            font-size: calc(2.9vh + 2pt); 
+            line-height: 1.4;
+            color: #dddddd;
+            margin-bottom: 0;
+        }
+
+        .tasks-list {
+            list-style: none;
+            padding: 0;
+            margin: 0; 
+            text-align: left; 
+        }
+
+        .tasks-list li {
+            margin-bottom: 1.5vh;
+            padding-left: 2.5vw;
+            position: relative;
+            font-size: calc(2.8vh + 2pt); 
+            line-height: 1.3;
+        }
+
+        .tasks-list li::before {
+            content: "■"; 
+            color: var(--alarm-warning); 
+            position: absolute;
+            left: 0;
+            top: 0.5vh;
+            font-size: 2.2vh;
+        }
+
+        /* --- RIGHT SIDE: PHONE --- */
+        .phone-column {
+            flex: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            height: 100%; 
+        }
+
+        .phone-mockup {
+            margin-top: 4vh; 
+            height: calc(100% - 4vh); 
+            width: auto; 
+            aspect-ratio: 9 / 16; 
+            border: 1.5vh solid var(--phone-border);
+            border-radius: 4vh;
+            background-color: var(--app-bg);
+            padding: 2vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .phone-mockup::before {
+            content: "";
+            position: absolute;
+            top: 1.5vh; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 0.8vh;
+            background-color: #222;
+            border-radius: 1vh;
+            z-index: 10;
+        }
+
+        /* --- APP UI (MAINTENANCE) --- */
+        .app-header {
+            margin-top: 2vh;
+            margin-bottom: 1vh;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5vh;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-info { font-size: 1.8vh; color: #ccc; }
+        .user-sub { font-size: 1.2vh; color: #888; }
+        .status-dot { width: 1.2vh; height: 1.2vh; background-color: var(--alarm-warning); border-radius: 50%; }
+
+        .app-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh; 
+            flex: 1; 
+            overflow: hidden; 
+        }
+
+        .alarm-header-text {
+            font-size: 1.6vh; color: var(--alarm-warning); margin-bottom: 0.5vh; font-weight: 800; text-transform: uppercase; text-align: center;
+        }
+
+        .alarm-box {
+            padding: 1vh 1.5vh;
+            border-radius: 1vh;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            text-align: center; 
+            border: 0.4vh solid rgba(255, 255, 255, 0.2); 
+        }
+
+        .critical { background-color: var(--alarm-critical); font-weight: 700; flex: 1.2; }
+        .warning { background-color: var(--alarm-warning); color: #333; font-weight: 700; flex: 0.8; }
+
+        .alarm-title { font-size: 1.8vh; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5vh; line-height: 1.1; }
+        .alarm-detail { font-size: 1.4vh; font-weight: 400; line-height: 1.2; }
+
+        .row-2 { display: flex; gap: 1vh; flex: 1.2; } 
+        .card-half { 
+            flex: 1; 
+            background: #222;
+            border: 0.4vh solid var(--brick-color);
+            border-radius: 1.5vh;
+            padding: 1vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .card-half-title { font-size: 1.5vh; font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 0.5vh; }
+        .detail-item { font-size: 1.3vh; color: #ccc; margin-bottom: 0.3vh; }
+        .detail-highlight { color: var(--alarm-warning); font-weight: 700; }
+
+        .row-3 { display: flex; gap: 1vh; flex: 0.8; } 
+        .card-small { 
+            flex: 1; 
+            background: #222;
+            border: 0.4vh solid var(--brick-color); 
+            border-radius: 1.5vh;
+            padding: 0.5vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+        }
+        .card-small .icon { font-size: 3vh; margin-bottom: 0.2vh; }
+        .card-small .title { font-size: 1.2vh; line-height: 1.1; color: #fff; font-weight: 700; }
+
+        .app-footer {
+            margin-top: 1vh;
+            text-align: center;
+            font-size: 1.5vh;
+            color: #666;
+            padding-top: 0.5vh;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="slide-11">
+        <h1>Maintenance Technician & Electromechanic</h1>
+
+        <div class="layout-container">
+            
+            <div class="context-column">
+                <div class="context-brick">
+                    <div class="context-title">Work Context</div>
+                    <div class="context-text">
+                        The technician moves through the factory, solving failures under high time pressure. Hands are often dirty from oil/grease. Cannot run back to a PC for manuals.
+                    </div>
+                </div>
+
+                <div class="context-brick" style="border-left-color: #ffffff;"> 
+                    <div class="context-title">Key Needs (User Stories)</div>
+                    <ul class="tasks-list">
+                        <li>Access machine diagrams via QR code (mobile documentation)</li>
+                        <li>Rapid spare parts ordering from stock (parts availability)</li>
+                        <li>Closing repair tasks and logging time (incident & log)</li>
+                        <li>Remote diagnostics via system logs (diagnostic mode)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phone-column">
+                <div class="phone-mockup">
+                    
+                    <div class="app-header">
+                        <div class="user-info">
+                            <span style="color:var(--alarm-warning);">●</span> John Doe | Maintenance
+                            <div class="user-sub">Status: ON-SITE / ON CALL</div>
+                        </div>
+                        <div class="status-dot"></div>
+                    </div>
+
+                    <div class="app-grid">
+                        
+                        <div style="flex: 2; display: flex; flex-direction: column; gap: 1vh;">
+                            <div class="alarm-header-text">ACTIVE ALARMS (Live Triage)</div>
+                            
+                            <div class="alarm-box critical">
+                                <div class="alarm-title">CRITICAL: Line 2</div>
+                                <div class="alarm-detail">Servo head failure Axis Z (Overcurrent)<br>Downtime: 00:12:45</div>
+                            </div>
+                            
+                            <div class="alarm-box warning">
+                                <div class="alarm-title" style="color:#333;">WARNING: Compressor</div>
+                                <div class="alarm-detail" style="color:#333;">Pressure dropped below 6 bar.<br>Seal inspection required.</div>
+                            </div>
+                        </div>
+
+                        <div class="row-2">
+                            <div class="card-half">
+                                <div class="card-half-title">DIAGRAMS</div>
+                                <div class="detail-item">Line 2: <span class="detail-highlight">PDF</span></div>
+                                <div class="detail-item">History: 12M</div>
+                            </div>
+                            <div class="card-half">
+                                <div class="card-half-title">PARTS STOCK</div>
+                                <div class="detail-item">XYZ.123: <span class="detail-highlight">1 pc</span></div>
+                                <div class="detail-item">Order: YES</div>
+                            </div>
+                        </div>
+
+                        <div class="row-3">
+                            <div class="card-small">
+                                <div class="icon">🔒</div>
+                                <div class="title">LOTO</div>
+                            </div>
+                            <div class="card-small">
+                                <div class="icon">🔬</div>
+                                <div class="title">Diagnostics</div>
+                            </div>
+                            <div class="card-small">
+                                <div class="icon">✅</div>
+                                <div class="title">Close Task</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="app-footer">
+                        ▼ ALL APPLICATIONS ▼
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

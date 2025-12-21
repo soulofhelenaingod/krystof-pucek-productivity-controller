@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Causes - Part 2 (Fixed & Complete)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #370090;
+            --bg-dark: #120030;
+            --text-color: #ffffff;
+            --accent-red: #B22222;
+            --card-bg: rgba(20, 20, 35, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 3vw;
+            box-sizing: border-box;
+        }
+
+        header {
+            flex: 0 0 auto;
+            text-align: center;
+            /* ZMENŠENO: Menší margin, aby zbylo místo pro karty */
+            margin-bottom: 1.5vh; 
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800;
+            /* ZMENŠENO: Z 2.2rem na 1.8rem, aby se vešel na jeden řádek */
+            font-size: 1.8rem; 
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            white-space: nowrap; /* Pojistka, aby se nezalamoval */
+        }
+
+        .container {
+            display: grid;
+            /* ZPĚT NA 3 SLOUPCE: Aby to sedělo s první částí a nepřetékalo */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2vw;
+            flex: 1;
+            height: 100%; 
+            min-height: 0; 
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 2vh 1.5vw;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            height: 100%; 
+            box-sizing: border-box;
+        }
+
+        .problem-number {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 700;
+            margin-bottom: 1vh;
+        }
+
+        h2 {
+            font-size: 1.35rem; /* Lehce menší než v části 1, texty jsou zde delší */
+            margin: 0 0 1.5vh 0;
+            color: #fff;
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: uppercase;
+            min-height: 3.4rem; 
+        }
+
+        p.description {
+            font-size: 1.05rem; /* Lehce menší pro lepší fit */
+            line-height: 1.4;
+            font-weight: 300;
+            color: #e0e0e0;
+            margin: 0 0 1.5vh 0;
+            /* Spacer pro zarovnání červených boxů */
+            min-height: 8rem; 
+        }
+
+        .consequence-box {
+            background: rgba(178, 34, 34, 0.25);
+            border-left: 3px solid var(--accent-red);
+            padding: 1.5vh;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2vh;
+            
+            margin-top: auto; 
+            min-height: 5.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .consequence-label {
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #ffcccc;
+            font-weight: 700;
+            margin-bottom: 0.5vh;
+        }
+
+        .consequence-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.35;
+        }
+
+        .why-section {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5vh;
+            margin-top: auto; 
+            min-height: 5.5rem; /* Aby byly patičky stejně vysoké */
+        }
+
+        .why-label {
+            color: var(--accent-red);
+            font-weight: 800;
+            font-size: 1rem;
+            margin-right: 5px;
+        }
+
+        .why-text {
+            font-size: 1rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #ddd;
+        }
+
+        .solution-highlight {
+            color: #fff;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Root causes are the reasons to build the tool (2/2)</h1>
+    </header>
+
+    <main class="container">
+        
+        <article class="card">
+            <div class="problem-number">Problem 04</div>
+            <h2>Unclear Ownership</h2>
+            <p class="description">
+                There is no clearly defined "owner" for specific tools. Owners lack a visible identity accessible to the end-users. When something breaks, nobody knows who to call.
+            </p>
+            <div class="consequence-box">
+                <span class="consequence-label">Consequence</span>
+                <span class="consequence-text">Extended Mean Time To Repair (MTTR) + Team downtime waiting for solutions + Blame shifting = LOSS OF MONEY.</span>
+            </div>
+            <div class="why-section">
+                <span class="why-label">WHY:</span>
+                <span class="why-text">Missing clear ownership and direct contact points. Users cannot immediately identify the guarantor of functionality.</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="problem-number">Problem 05</div>
+            <h2>High Entry Friction</h2>
+            <p class="description">
+                Moving between devices forces users to re-verify identity, store passwords, and learn new environments. This leads to frustration and depleted cognitive energy.
+            </p>
+            <div class="consequence-box">
+                <span class="consequence-label">Consequence</span>
+                <span class="consequence-text">Broken "Flow" state + Mental fatigue from barriers + Reluctance to use tools = LOSS OF MONEY.</span>
+            </div>
+            <div class="why-section">
+                <span class="why-label">WHY:</span>
+                <span class="why-text">
+                    Missing "Single Identity" principles.
+                    <br>
+                    <span class="solution-highlight">Solution:</span> Remove password barriers (Federated Identity) and ensure visual consistency.
+                </span>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="problem-number">Problem 06</div>
+            <h2>Context Switching Penalty</h2>
+            <p class="description">
+                The human brain cannot multitask; it only switches contexts. Every switch between disparate tools incurs a "re-focusing tax" (approx. 23 mins to regain deep focus).
+            </p>
+            <div class="consequence-box">
+                <span class="consequence-label">Consequence</span>
+                <span class="consequence-text">Fragmented attention span + Increased error rate + Burnout risk + Shallow work = LOSS OF MONEY.</span>
+            </div>
+            <div class="why-section">
+                <span class="why-label">WHY:</span>
+                <span class="why-text">Biological limitation. The brain craves continuity. Tool fragmentation fights against human neurobiology.</span>
+            </div>
+        </article>
+
+    </main>
+
+</body>
+</html>

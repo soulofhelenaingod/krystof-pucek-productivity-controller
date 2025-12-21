@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 28 - Phase 2: Management Controller (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #370090;      
+            --brick-color: #B22222; /* Standard Firebrick */
+            --text-white: #ffffff;
+            --brick-dark: rgba(10, 10, 10, 0.98);
+            --wire-color: #00ffff;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% 0%, #4a1cb0 0%, var(--bg-color) 95%);
+            color: var(--text-white);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 4vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CENTERED HEADING (+2PT) */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800; 
+            font-size: calc(4vh + 2pt); 
+            margin: 0 0 1vh 0;
+            text-align: center; 
+            letter-spacing: 2px;
+        }
+
+        .evolution-flow {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2.5vh;
+            padding: 2vh 0;
+        }
+
+        /* Vertical evolution line */
+        .evolution-flow::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 0.4vh;
+            background: var(--wire-color);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            z-index: 0;
+            transform: translateX(-50%);
+        }
+
+        .pillar-brick {
+            background: var(--brick-dark);
+            border: 0.45vh solid var(--brick-color); 
+            border-radius: 1.5vh;
+            padding: 2.5vh 3vw;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brick-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 0.35vh solid var(--text-white);
+            margin-bottom: 1.5vh;
+            padding-bottom: 0.8vh;
+        }
+
+        /* PILLAR TITLES (+2PT) */
+        .pillar-title {
+            font-size: calc(2.8vh + 2pt); 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
+
+        /* DESCRIPTION (+2PT) */
+        .pillar-desc {
+            font-size: calc(2.4vh + 2pt); 
+            font-weight: 400; 
+            line-height: 1.4;
+        }
+
+        /* TECH INFO (+2PT) */
+        .pillar-tech {
+            margin-top: 1.5vh;
+            font-size: calc(1.9vh + 2pt);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.95;
+            color: var(--wire-color);
+        }
+
+        .tag-status {
+            position: absolute;
+            top: 2.5vh;
+            right: 3vw;
+            font-size: 1.8vh;
+            font-weight: 800;
+            color: #ffaa00; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Phase Two: Management Controller</h1>
+
+    <div class="evolution-flow">
+        
+        <div class="pillar-brick" style="flex: 1;">
+            <div class="tag-status">Active Management Mode</div>
+            <div class="brick-header">
+                <div class="pillar-title">Goal & Strategy</div>
+            </div>
+            <div class="pillar-desc">
+                Providing a tool for direct priority management. Shift leaders and production managers begin to actively determine which tasks are key at any given moment. Transitioning from a passive list to an active controller.
+            </div>
+            <div class="pillar-tech">Status: Transferring competencies to leadership hands</div>
+        </div>
+
+        <div class="pillar-brick" style="flex: 1.3;">
+            <div class="brick-header">
+                <div class="pillar-title">Scope & Implementation</div>
+            </div>
+            <div class="pillar-desc">
+                Web management interface allowing simple icon dragging. Implementation of the productivity weight algorithm for dynamic sorting. Ability to remotely change application order or hide unnecessary functions to reduce noise.
+            </div>
+            <div class="pillar-tech">Technology: Powerful sorting core / Remote terminal management</div>
+        </div>
+
+        <div class="pillar-brick" style="flex: 1.2;">
+            <div class="brick-header">
+                <div class="pillar-title">User Experience</div>
+            </div>
+            <div class="pillar-desc">
+                The launcher becomes the default home screen for all devices. A manager can immediately change priority from cleaning to production, and terminals across the hall rearrange in real-time according to current needs.
+            </div>
+            <div class="pillar-tech">Outcome: The system begins to effectively direct people movement</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 8 - Production Section (Big Fonts)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR DEFINITIONS */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 0 1.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+        }
+
+        /* --- CONTENT CONTAINER (95% HEIGHT) --- */
+        .content-limit-95 {
+            height: 95vh; 
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-top: 2vh; 
+            box-sizing: border-box;
+            gap: 2vh; 
+        }
+
+        /* MAIN GROUP HEADING - CENTERED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3.8vh; 
+            margin: 0;
+            letter-spacing: 1px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        /* MAIN CONTAINER - FLEX COLUMN */
+        .layout-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh; 
+            flex: 1; 
+            width: 100%;
+        }
+
+        /* --- BRICK STYLES --- */
+        .brick {
+            border: 3px solid var(--brick-color);
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(10, 10, 10, 0.95));
+            border-radius: 12px;
+            padding: 2vh 1.5vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        /* --- ROWS --- */
+        .row-header {
+            flex: 1.6; 
+            display: flex;
+            align-items: center;
+        }
+        .row-2col {
+            flex: 2.8;
+            display: flex;
+            gap: 2vh;
+        }
+        .row-3col {
+            flex: 2.8;
+            display: flex;
+            gap: 2vh;
+        }
+        .row-footer {
+            flex: 1; 
+            display: flex;
+            align-items: center; 
+            flex-direction: row; 
+            justify-content: center; 
+            gap: 20px;
+        }
+
+        /* --- TEXT STYLES --- */
+        
+        /* Brick Titles */
+        .brick-title {
+            font-size: 2.6vh; 
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 1vh;
+            border-bottom: 2px solid rgba(178, 34, 34, 0.5);
+            padding-bottom: 0.5vh;
+            display: inline-block;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Main Section Title */
+        .main-title {
+            font-size: 3.6vh; 
+            font-weight: 800;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 0.8vh;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Main Subtitle */
+        .main-subtitle {
+            font-size: 2.3vh; 
+            text-align: center;
+            font-weight: 600;
+            color: #eeeeee;
+            margin-bottom: 0.5vh;
+        }
+
+        /* Details (Environment) */
+        .main-details {
+            font-size: 1.9vh; 
+            text-align: center;
+            font-style: italic;
+            color: #dddddd;
+        }
+
+        /* Role Description */
+        .role-desc {
+            font-size: 2.2vh; 
+            margin-bottom: 1vh;
+            font-weight: 400;
+            line-height: 1.35;
+        }
+
+        /* Needs */
+        .role-needs {
+            font-size: 2.0vh; 
+            line-height: 1.35;
+            color: #eeeeee;
+        }
+
+        .label {
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: underline;
+            text-decoration-color: var(--brick-color);
+        }
+
+        /* BOTTOM SPACER (remaining 5%) */
+        .bottom-spacer {
+            height: 5vh;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="content-limit-95">
+        
+        <h1>Production and Operations Section</h1>
+
+        <div class="layout-container">
+            
+            <div class="brick row-header">
+                <div class="main-title">👷 PRODUCTION & OPERATIONS (~950 PEOPLE)</div>
+                <div class="main-subtitle">Manufacturing of bricks, roofing tiles, and piping systems.</div>
+                <div class="main-details">
+                    Environment: Dust, noise, protective gear. Specifics: Glove-operated, poor signal, rugged devices.
+                </div>
+            </div>
+
+            <div class="row-2col">
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">Production Line Operator / Brickmaker 👷🧱</div>
+                    <div class="role-desc">Stands at the belt, monitors the quality of molded products.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Large buttons (gloves), quick reporting of defects with one click, SOS button for summoning the shift lead, performance quota overview.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">Warehouse Worker and Forklift Driver 📦🚜</div>
+                    <div class="role-desc">Moves between the factory floor and the outdoor yard.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Warehouse map on tablet (pallet location), barcode scanner, offline mode (no WiFi), digital delivery note.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-3col">
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">Kiln Operator 🔥👷</div>
+                    <div class="role-desc">Monitors the critical firing process 24/7.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Critical temperature alarms on watch (vibration), digital burner checklists, temperature trend charts.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">Maintenance / Electromechanic 🛠️⚡</div>
+                    <div class="role-desc">Repairs machines under high time pressure.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Instant machine manual retrieval via QR code, repair history, part ordering from the failure site.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">Shift Leaders 👨‍🏫📋</div>
+                    <div class="role-desc">Manages people and shifts, not machines.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Attendance overview on tablet (who didn't show up), drag & drop rescheduling of personnel, shift handover logbook.
+                    </div>
+                </div>
+            </div>
+
+            <div class="brick row-footer">
+                <div class="brick-title" style="margin-bottom: 0; border: none; margin-right: 15px;">Transport and Logistics 🚚🗺️</div>
+                <div class="role-desc" style="margin-bottom: 0;">
+                    Digital signature on tablet upon handover, navigation to the loading dock, photographing the load.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bottom-spacer"></div>
+
+</body>
+</html>

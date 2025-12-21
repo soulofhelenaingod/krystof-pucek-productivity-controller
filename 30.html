@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 21 - STARE Model Workflow: Foreman (English)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- BASIC SETUP AND COLOR PALETTE --- */
+        :root {
+            --main-hex: #370090;      /* Deep Indigo */
+            --text-white: #ffffff;
+            --brick-color: #B22222;   /* Standard Firebrick */
+            --box-bg: rgba(20, 0, 60, 0.6); 
+            --box-border-inactive: var(--brick-color);
+            --box-border-active: #ffffff;
+            --glow-color: rgba(178, 34, 34, 0.8); /* Red glow for active state */
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: var(--main-hex);
+            color: var(--text-white);
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 3vw;
+            box-sizing: border-box;
+        }
+
+        /* --- CENTERED HEADING --- */
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin-bottom: 3vh;
+            font-size: calc(2.8vh + 2pt); /* Scaled font */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+
+        /* --- STEPS CONTAINER --- */
+        .stare-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1; 
+            gap: 1.5vh;
+        }
+
+        /* --- INDIVIDUAL STEP (BRICK) --- */
+        .stare-step {
+            display: flex;
+            align-items: center;
+            background-color: var(--box-bg);
+            /* Updated border to standard brick color */
+            border: 0.4vh solid var(--box-border-inactive); 
+            border-radius: 12px;
+            padding: 1.5vh 2vw;
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease-in-out;
+            animation-name: flowCycle;
+            animation-duration: 7.5s; 
+            animation-iteration-count: infinite;
+            opacity: 0.8; 
+            flex: 1; 
+        }
+
+        /* --- LETTER --- */
+        .step-letter {
+            font-size: 6vh;
+            font-weight: 800;
+            margin-right: 2.5vw;
+            min-width: 6vh;
+            text-align: center;
+        }
+
+        /* --- CONTENT --- */
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: calc(1.8vh + 2pt);
+            margin-bottom: 0.6vh;
+            letter-spacing: 0.03em;
+        }
+
+        .step-description {
+            font-size: calc(1.7vh + 2pt);
+            line-height: 1.35;
+            font-weight: 400;
+        }
+
+        .step-description strong {
+            font-weight: 800;
+            text-decoration: underline;
+            text-decoration-color: var(--brick-color);
+        }
+
+        /* --- ANIMATION --- */
+        @keyframes flowCycle {
+            0%, 100% {
+                border-color: var(--box-border-inactive);
+                box-shadow: none;
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            10%, 30% {
+                border-color: var(--box-border-active);
+                /* Pulsing red glow */
+                box-shadow: 0 0 30px var(--glow-color);
+                opacity: 1;
+                transform: scale(1.02); 
+            }
+        }
+
+        .stare-step:nth-child(1) { animation-delay: 0s; }           
+        .stare-step:nth-child(2) { animation-delay: 1.5s; }         
+        .stare-step:nth-child(3) { animation-delay: 3.0s; }         
+        .stare-step:nth-child(4) { animation-delay: 4.5s; }         
+        .stare-step:nth-child(5) { animation-delay: 6.0s; } 
+
+        @keyframes letterGlow { 
+            0%, 100% { text-shadow: none; } 
+            10%, 30% { text-shadow: 0 0 15px var(--text-white); }
+        }
+
+        .step-letter { animation: letterGlow 7.5s infinite; }
+        .stare-step:nth-child(1) .step-letter { animation-delay: 0s; }
+        .stare-step:nth-child(2) .step-letter { animation-delay: 1.5s; }
+        .stare-step:nth-child(3) .step-letter { animation-delay: 3.0s; }
+        .stare-step:nth-child(4) .step-letter { animation-delay: 4.5s; }
+        .stare-step:nth-child(5) .step-letter { animation-delay: 6.0s; }
+    </style>
+</head>
+<body>
+    <h1>STARE Model Use Case: Foreman - Remote Attention Control</h1>
+    <div class="stare-container">
+        <div class="stare-step">
+            <div class="step-letter">S</div>
+            <div class="step-content">
+                <div class="step-title">SITUATION: URGENT REQUEST FOR "AKU" BRICKS</div>
+                <div class="step-description">During general cleaning, an urgent request for <strong>"AKU bricks"</strong> arrives. The deadline is critical. Summoning 20 people for a physical meeting would waste 15 minutes.</div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">T</div>
+            <div class="step-content">
+                <div class="step-title">TASK: TEAM SYNCHRONIZATION WITH ZERO LATENCY</div>
+                <div class="step-description">The foreman must <strong>immediately</strong> synchronize the team to the new priority without a physical meeting. The goal is to change team behavior with <strong>zero latency</strong>.</div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">A</div>
+            <div class="step-content">
+                <div class="step-title">ACTION: FOREMAN CHANGES PRODUCTIVITY WEIGHT REMOTELY</div>
+                <div class="step-description">
+                    Foreman on tablet:
+                    1. <strong>"Line Changeover"</strong> weight 5 → <strong>1 (Priority)</strong>.
+                    2. <strong>"Hall Cleaning"</strong> weight 1 → <strong>7 (Postponed)</strong>.
+                </div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">R</div>
+            <div class="step-content">
+                <div class="step-title">RESULT: REMOTE CONTROL OF ATTENTION</div>
+                <div class="step-description">Icons are rearranged on all terminals. "Cleaning" disappears, and <strong>"Change Mold"</strong> appears. Saving <strong>15 minutes</strong> of downtime.</div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">E</div>
+            <div class="step-content">
+                <div class="step-title">EVOLUTION: MANUAL CONTROLLER AS A FOUNDATION FOR AI</div>
+                <div class="step-description">A shift from a static model to a <strong>manual remote controller</strong>. The system learns priorities for a future <strong>AI autopilot</strong>.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

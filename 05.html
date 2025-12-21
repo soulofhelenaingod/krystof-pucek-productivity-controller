@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 3b - Principles Diagram</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DEFINICE BAREV */
+        :root {
+            /* Updated Background Color */
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+        }
+
+        body {
+            /* Background Gradient application */
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px 40px; 
+            box-sizing: border-box;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+        }
+
+        /* HLAVNÍ NADPIS - NA STŘED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* HLAVNÍ KONTEJNER DIAGRAMU */
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+            flex: 1; 
+            width: 100%;
+            padding-bottom: 20px; 
+        }
+
+        /* ŘÁDKY CIHEL */
+        .brick-row {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* Flexibilní výšky řad */
+        .row-1 { flex: 2; } 
+        .row-2 { flex: 3; } 
+        .row-3 { flex: 3; } 
+        .row-footer { flex: 1; min-height: 50px; } 
+
+        /* DESIGN CIHLY */
+        .brick {
+            border: 3px solid var(--brick-color);
+            border-radius: 12px;
+            /* Updated background for contrast */
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(10, 10, 10, 0.95));
+            padding: 15px; 
+            position: relative;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 
+                5px 5px 15px rgba(0, 0, 0, 0.8),
+                inset 1px 1px 3px rgba(255, 255, 255, 0.1);
+        }
+
+        /* SPECIÁLNÍ DESIGN PRO HORNÍ SPOJENOU CIHLU */
+        .brick-full {
+            flex-direction: row; 
+            justify-content: space-around; 
+            align-items: center;
+            background: linear-gradient(90deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 1), rgba(20, 20, 20, 0.95));
+        }
+
+        /* ČÁSTI HORNÍ CIHLY */
+        .top-section-left, .top-section-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.9;
+        }
+
+        .top-section-center {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-left: 2px dashed rgba(178, 34, 34, 0.5);
+            border-right: 2px dashed rgba(178, 34, 34, 0.5);
+            padding: 0 20px;
+        }
+
+        /* TEXTY */
+        .brick-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .brick-text {
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.3;
+            color: #ffffff; 
+        }
+
+        /* IKONY */
+        .icon {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: #ffffff; 
+            text-shadow: 0 0 10px rgba(178, 34, 34, 0.5); 
+        }
+        
+        .big-arrow {
+            font-size: 1.5rem;
+            color: var(--brick-color);
+            margin: 5px 0;
+        }
+
+        /* EFEKT ROZSYPANÝCH CIHEL */
+        .scattered-wrapper {
+            position: relative;
+            width: 60px;
+            height: 50px;
+            margin-bottom: 5px;
+        }
+        .scatter-brick {
+            position: absolute;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+        /* První cihla - nakloněná doleva */
+        .sb-1 {
+            top: 10px;
+            left: 0;
+            transform: rotate(-25deg);
+            z-index: 1;
+        }
+        /* Druhá cihla - nakloněná doprava přes první */
+        .sb-2 {
+            top: 15px;
+            left: 20px;
+            transform: rotate(15deg);
+            z-index: 2;
+        }
+        /* Třetí cihla - leží nahoře */
+        .sb-3 {
+            top: -5px;
+            left: 10px;
+            transform: rotate(80deg);
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        /* FOOTER LIŠTA */
+        .foundation-bar {
+            width: 100%;
+            border: 3px solid var(--brick-color);
+            border-radius: 8px;
+            background: linear-gradient(to bottom, rgba(178, 34, 34, 0.3), rgba(10, 10, 10, 0.9));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(178, 34, 34, 0.1);
+        }
+
+        .foundation-text {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="slide-03b">
+        <h1>Explanation of the First Principles Set Applied to the Tool</h1>
+
+        <div class="diagram-container">
+            
+            <div class="brick-row row-1">
+                <div class="brick brick-full" style="width: 100%;">
+                    
+                    <div class="top-section-left">
+                        <div class="scattered-wrapper">
+                            <div class="scatter-brick sb-1">🧱</div>
+                            <div class="scatter-brick sb-2">🧱</div>
+                            <div class="scatter-brick sb-3">🧱</div>
+                        </div>
+                        <div class="brick-text" style="font-size: 0.8rem; margin-top: 5px;">ENTROPY<br>(CHAOS)</div>
+                    </div>
+
+                    <div class="top-section-center">
+                        <div class="brick-title">Second Law of Thermodynamics</div>
+                        <div class="big-arrow">➔ NEG-ENTROPIC TOOL ➔</div>
+                        <div class="brick-text">The tool as a system for creating order</div>
+                    </div>
+
+                    <div class="top-section-right">
+                        <div class="icon">🧱🏗️</div>
+                        <div class="brick-text" style="font-size: 0.8rem;">NEG-ENTROPY<br>(ORDER)</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="brick-row row-2">
+                <div class="brick" style="flex: 1;">
+                    <div class="icon">⚡</div>
+                    <div class="brick-title">Principle of Least Resistance</div>
+                    <div class="brick-text">Law of conservation of energy. The tool must be the path of least resistance.</div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="icon">🧠</div>
+                    <div class="brick-title">Invisible Tool</div>
+                    <div class="brick-text">Simplest design reduces the metabolic cost of information.</div>
+                </div>
+            </div>
+
+            <div class="brick-row row-3">
+                <div class="brick" style="flex: 1;">
+                    <div class="icon">⏱️</div>
+                    <div class="brick-title">Fitts's Law</div>
+                    <div class="brick-text">Time for movement and target size variation.</div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="icon">📦</div>
+                    <div class="brick-title">Tesler's Law</div>
+                    <div class="brick-text">Shifting complexity into the tool's Back-End.</div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="icon">📊</div>
+                    <div class="brick-title">Pareto Principle</div>
+                    <div class="brick-text">One application generates the majority of value (80/20).</div>
+                </div>
+            </div>
+
+            <div class="brick-row row-footer">
+                <div class="foundation-bar">
+                    <div class="foundation-text">
+                        ▼ Miller's Law of Cognitive Capacity (7±2) & Hick's Law ▼
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

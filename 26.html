@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 18 - IT & Facilities Section (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR DEFINITIONS - REDUCED VARIANCE */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade */
+            --text-color: #ffffff;    /* White */
+            
+            /* Standard subtle white borders */
+            --brick-color: rgba(255, 255, 255, 0.3); 
+            
+            /* Pure white for accents */
+            --it-color: #ffffff;      
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% 50%, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 2.5vw 2vh 2.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* MAIN HEADING - CENTERED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3.8vh; 
+            margin: 0;
+            margin-bottom: 2vh; 
+            letter-spacing: 1px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        /* MAIN CONTAINER - FLEX COLUMN */
+        .layout-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            gap: 2vh; 
+            flex: 1; 
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- BRICK STYLES --- */
+        .brick {
+            border: 0.4vh solid var(--brick-color);
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(10, 10, 10, 0.95));
+            border-radius: 2vh;
+            padding: 2.2vh 1.5vw; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        /* --- ROWS --- */
+        .row-header {
+            flex: 1.3; 
+            display: flex;
+            align-items: center;
+            text-align: center;
+            border-color: var(--it-color); 
+            border-width: 0.5vh; 
+        }
+
+        .row-3col {
+            flex: 2.2; 
+            display: flex;
+            gap: 2vh;
+        }
+
+        /* --- TEXT STYLES (CALC + 2PT INCREASE) --- */
+
+        .main-title {
+            font-size: calc(4vh + 2pt); 
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1vh;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: var(--it-color);
+            width: 100%;
+        }
+
+        .main-info-single-line {
+            font-size: calc(2.2vh + 2pt); 
+            font-style: italic;
+            color: #dddddd;
+        }
+
+        .brick-title {
+            font-size: calc(2.6vh + 2pt); 
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-color);
+            margin-bottom: 1.5vh;
+            border-bottom: 0.3vh solid rgba(255, 255, 255, 0.3); 
+            padding-bottom: 0.5vh;
+            display: inline-block;
+            text-align: center; 
+            width: 100%;
+        }
+
+        .role-icon {
+            color: var(--it-color);
+            margin-right: 1vh;
+            font-size: 3vh;
+        }
+
+        .role-desc {
+            font-size: calc(2.1vh + 2pt); 
+            margin-bottom: 1.5vh;
+            font-weight: 400;
+            line-height: 1.35;
+            color: #eee;
+            text-align: left;
+        }
+
+        .role-needs {
+            font-size: calc(1.9vh + 2pt); 
+            line-height: 1.35;
+            color: #ddd;
+            text-align: left;
+        }
+
+        .label {
+            font-weight: 700;
+            color: var(--it-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="slide-18">
+        <h1>IT and Facilities Section</h1>
+
+        <div class="layout-container">
+            
+            <div class="brick row-header">
+                <div class="main-title">IT & FACILITIES (~20 PEOPLE)</div>
+                <div class="main-info-single-line">
+                    This group ensures the company functions digitally, physically, and technologically: servers, electricity, and security.
+                </div>
+            </div>
+
+            <div class="row-3col">
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🌐</span> IT Administrator / Networks
+                    </div>
+                    <div class="role-desc">On-call from home or at the server room. Handles network outages, cyberattacks, server operations, and critical infrastructure.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Push notifications for server crashes, mobile SSH terminal, real-time monitoring of critical services.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🏢</span> Facilities Manager
+                    </div>
+                    <div class="role-desc">Moves throughout the entire site. Manages utilities, physical security, cleaning services, and the structural state of buildings.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Remote meter reading, camera access, physical inspection logs, and repair ticketing.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🧪</span> HSE Manager (Safety)
+                    </div>
+                    <div class="role-desc">Conducts audits and safety training. Focuses on prevention—identifying risks before an industrial accident occurs.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Documenting risks via photo in-app, digital safety protocols, training verification, and offline audits.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-3col">
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🛠️</span> IT Helpdesk / Support
+                    </div>
+                    <div class="role-desc">First line of support for employees, managing workstations and end-user devices. Frequently on the move between offices.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Mobile ticketing system, asset inventory via QR codes, and onboarding checklists.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🔧</span> Maintenance Technician
+                    </div>
+                    <div class="role-desc">Manual execution of repairs and physical building maintenance. Solves infrastructure faults in real-time.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Repair notifications, fault photo-documentation, and material stock-out via mobile scanner.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🚨</span> Head of Security
+                    </div>
+                    <div class="role-desc">Physical security of the perimeter, access and entry control, and theft prevention across the facility.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Visitor logs, mobile camera monitoring, patrol tracking systems, and incident reporting.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data and ROI - White Text Edition</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #370090;      
+            --accent-orange: #ffaa00; 
+            --text-pure-white: #ffffff;
+            --brick-dark: rgba(10, 10, 10, 0.98);
+            --wire-color: #00ffff;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% 0%, #4a1cb0 0%, var(--bg-color) 95%);
+            color: var(--text-pure-white);
+            font-family: 'Open Sans', sans-serif;
+            padding: 1vh 2.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main Title - Centered */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800; 
+            font-size: 4.8vh; 
+            margin: 1vh 0 2vh 0;
+            text-align: center; 
+            letter-spacing: 2px;
+            color: var(--text-pure-white);
+        }
+
+        .architecture-flow {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            gap: 5vh; 
+        }
+
+        /* Main horizontal connection wire */
+        .architecture-flow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 0.6vh;
+            background: var(--wire-color);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .pillar-row {
+            display: flex;
+            gap: 2.5vw;
+            z-index: 1;
+            position: relative;
+            height: 38vh; 
+        }
+
+        .pillar-brick {
+            background: var(--brick-dark);
+            border: 0.5vh solid var(--accent-orange);
+            border-radius: 1.8vh;
+            padding: 2.8vh;
+            flex: 1;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            text-align: center; /* Centering content within the brick */
+        }
+
+        /* Vertical connection wires */
+        .pillar-brick::after {
+            content: "";
+            position: absolute;
+            width: 0.6vh;
+            background: var(--wire-color);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .row-top .pillar-brick::after { bottom: -5.3vh; height: 5.3vh; }
+        .row-bottom .pillar-brick::after { top: -5.3vh; height: 5.3vh; }
+
+        /* Small brick headers: Transparent background, Orange border, White text */
+        .mini-header {
+            background: transparent;
+            color: var(--text-pure-white); 
+            padding: 1vh 1.8vw;
+            border-radius: 1vh;
+            align-self: center; /* Centered as per instruction */
+            margin-bottom: 2.2vh;
+            border: 0.25vh solid var(--accent-orange);
+        }
+
+        .mini-header span {
+            font-size: 2.8vh; 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
+
+        .pillar-desc {
+            font-size: 2.7vh; 
+            font-weight: 400; 
+            line-height: 1.45;
+            flex-grow: 1;
+        }
+
+        .pillar-tech {
+            margin-top: auto;
+            font-size: 2.2vh; 
+            text-transform: uppercase;
+            font-weight: 800;
+            border-top: 0.3vh solid rgba(255,255,255,0.4);
+            padding-top: 1.8vh;
+            color: rgba(255,255,255,0.8);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Data and ROI</h1>
+
+    <div class="architecture-flow">
+        
+        <div class="pillar-row row-top">
+            <div class="pillar-brick">
+                <div class="mini-header"><span>Time & Passwords</span></div>
+                <div class="pillar-desc">Tracking time savings for 1,200 employees by eliminating the need to enter and reset passwords.</div>
+                <div class="pillar-tech">User Efficiency</div>
+            </div>
+            <div class="pillar-brick">
+                <div class="mini-header"><span>Response Time</span></div>
+                <div class="pillar-desc">Recording the interval between alarm triggers and operator response with millisecond precision.</div>
+                <div class="pillar-tech">Production Response</div>
+            </div>
+        </div>
+
+        <div class="pillar-row row-bottom">
+            <div class="pillar-brick">
+                <div class="mini-header"><span>Audit Trails</span></div>
+                <div class="pillar-desc">An immutable log of every priority and access change, serving as a "black box" for all audits.</div>
+                <div class="pillar-tech">Security Traceability</div>
+            </div>
+            <div class="pillar-brick">
+                <div class="mini-header"><span>License Savings</span></div>
+                <div class="pillar-desc">Instant identification and cancellation of unused software licenses, generating significant cost savings.</div>
+                <div class="pillar-tech">Return on Investment</div>
+            </div>
+            <div class="pillar-brick">
+                <div class="mini-header"><span>Master Data</span></div>
+                <div class="pillar-desc">A clean data foundation for zone and priority management, ready for AI implementation.</div>
+                <div class="pillar-tech">Automation Readiness</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

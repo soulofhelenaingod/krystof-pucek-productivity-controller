@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 3a - First Principles (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       
+            --text-color: #ffffff;    
+            --brick-color: #B22222;   /* Firebrick */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px 40px; 
+            box-sizing: border-box;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+        }
+
+        /* MAIN HEADING - CENTERED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .layout-container {
+            display: flex;
+            flex-direction: row; 
+            gap: 40px; 
+            height: calc(100vh - 120px); 
+            width: 100%;
+            padding-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .left-column {
+            flex: 1.2; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            padding: 10px 0;
+        }
+
+        .right-column {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            gap: 20px; 
+            height: 100%; 
+        }
+
+        /* PRINCIPLES LIST */
+        ul.principles-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+        }
+
+        ul.principles-list li {
+            font-size: 1.15rem;   
+            line-height: 1.3;
+            padding-left: 45px; 
+            position: relative;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+            text-transform: lowercase; /* Matches the minimalist aesthetic */
+        }
+
+        /* Hollow brick bullet point */
+        ul.principles-list li::before {
+            content: "";
+            width: 22px;           
+            height: 12px;          
+            background-color: transparent; 
+            border: 2px solid var(--brick-color); 
+            position: absolute;
+            left: 0;
+            border-radius: 2px;    
+            box-shadow: 0 0 5px rgba(178, 34, 34, 0.5); 
+        }
+
+        /* LAW BOXES */
+        .law-brick {
+            flex: 1; 
+            border: 3px solid var(--brick-color);
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(10, 10, 10, 0.95));
+            padding: 25px; 
+            box-shadow: 
+                5px 5px 15px rgba(0, 0, 0, 0.6),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+        }
+
+        .law-title {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: block;
+            border-bottom: 2px solid var(--brick-color);
+            padding-bottom: 5px;
+            width: fit-content;
+            text-transform: uppercase;
+        }
+
+        .law-quote {
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #eeeeee;
+            line-height: 1.4;
+        }
+
+        .law-detail {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #dddddd;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="slide-03a">
+        <h1>Explanation of the First Principles Set Applied to the Tool</h1>
+
+        <div class="layout-container">
+            <div class="left-column">
+                <ul class="principles-list">
+                    <li>negentropic tool</li>
+                    <li>tool of least resistance</li>
+                    <li>invisible tool</li>
+                    <li>lowest possible metabolic cost per information</li>
+                    <li>minimal movement and time</li>
+                    <li>most productive applications within the field of view</li>
+                    <li>working memory capacity => 7 applications</li>
+                    <li>reduction of variation in choices and displayed data</li>
+                    <li>complexity shifted to the back-end</li>
+                    <li>federated identity removes password friction</li>
+                </ul>
+            </div>
+
+            <div class="right-column">
+                
+                <div class="law-brick">
+                    <span class="law-title">Hick's Law (Selection Speed)</span>
+                    <span class="law-quote">"The time it takes to make a decision increases logarithmically with the number of choices."</span>
+                    <div class="law-detail">
+                        <div class="formula">$$RT = a + b \cdot \log_2(n)$$</div><br>
+                        <strong>RT:</strong> Reaction Time, <strong>n:</strong> Number of options<br>
+                        <strong>a, b:</strong> Constants of user proficiency/training
+                    </div>
+                </div>
+
+                <div class="law-brick">
+                    <span class="law-title">Fitts's Law (Clicking Speed)</span>
+                    <span class="law-quote">"The time required to move to a target depends on the distance to the target and its size."</span>
+                    <div class="law-detail">
+                        Relates to how large and how close control elements are positioned.<br>
+                        ➔ This results in selecting the <strong>most productive</strong> application and secondary essential tools.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

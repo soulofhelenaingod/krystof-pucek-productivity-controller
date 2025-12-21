@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 23 - Process Ownership</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR PALETTE */
+        :root {
+            --bg-color: #370090;      
+            --text-color: #ffffff;    
+            --accent-color: #ffaa00; 
+            
+            /* Dark background for the main card */
+            --brick-bg-start: rgba(10, 10, 10, 0.9);
+            --brick-bg-end: rgba(25, 25, 25, 0.95);
+            
+            /* Action colors */
+            --alert-red: #ff3333;
+            --alert-yellow: #ffcc00;
+            --alert-blue: #0099ff;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% 0%, #4a1cb0 0%, var(--bg-color) 80%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            /* Adjusted padding to frame content properly */
+            padding: 4vh 4vw 5vh 4vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER - CENTERED */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: calc(3.5vh + 2pt); 
+            margin: 0 0 2vh 0; 
+            text-align: center; 
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: var(--text-color);
+        }
+
+        /* CENTRAL CARD */
+        .main-card {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background: linear-gradient(145deg, var(--brick-bg-start), var(--brick-bg-end));
+            border: 0.3vh solid var(--accent-color);
+            border-radius: 1.5vh;
+            padding: 3vh; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            justify-content: space-between;
+        }
+
+        /* OWNER HEADER */
+        .owner-section {
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 2vh;
+            margin-bottom: 2vh;
+            flex-shrink: 0;
+        }
+
+        .owner-label {
+            font-size: 2vh;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.5vh;
+            letter-spacing: 2px;
+        }
+
+        .owner-name {
+            font-size: calc(4vh + 2pt);
+            font-weight: 800;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+        }
+
+        .owner-desc {
+            font-size: calc(2vh + 2pt);
+            margin-top: 1vh;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* ACTION GRID */
+        .actions-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3vh; 
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .action-row {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1vh;
+            padding: 1.2vh 2vw; 
+            transition: transform 0.2s;
+        }
+
+        .action-icon {
+            font-size: 3.5vh;
+            margin-right: 2vw;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+        }
+
+        .action-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .action-title {
+            font-size: calc(2.2vh + 2pt);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.3vh;
+        }
+
+        .action-subtitle {
+            font-size: calc(1.8vh + 2pt);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* CONTACT BUTTONS */
+        .contact-section {
+            display: flex;
+            gap: 2vw;
+            margin-top: 3vh;
+            flex-shrink: 0;
+        }
+
+        .contact-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(2.2vh + 2pt);
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 1.8vh; 
+            border: 0.3vh solid var(--accent-color);
+            border-radius: 1vh;
+            background: transparent;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn span {
+            margin-right: 1vh;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Application and Process Owners</h1>
+
+    <div class="main-card">
+        
+        <div class="owner-section">
+            <div class="owner-label">Owner Accountable for the Process</div>
+            <div class="owner-name">Charles Freeman</div>
+            <div class="owner-desc">
+                The dynamic header (ion-header) changes based on the application context. You always know who is responsible.
+            </div>
+        </div>
+
+        <div class="actions-grid">
+            
+            <div class="action-row" style="border-left: 0.8vh solid var(--alert-red);">
+                <div class="action-icon">🔴</div>
+                <div class="action-text">
+                    <div class="action-title">Report a Malfunction</div>
+                    <div class="action-subtitle">Automatically sends logs and a ticket to IT support.</div>
+                </div>
+            </div>
+
+            <div class="action-row" style="border-left: 0.8vh solid var(--alert-yellow);">
+                <div class="action-icon">🟡</div>
+                <div class="action-text">
+                    <div class="action-title">Report Data Error</div>
+                    <div class="action-subtitle">Notification sent directly to the owner (e.g., "formula mismatch").</div>
+                </div>
+            </div>
+
+            <div class="action-row" style="border-left: 0.8vh solid var(--alert-blue);">
+                <div class="action-icon">🔵</div>
+                <div class="action-text">
+                    <div class="action-title">Request Access</div>
+                    <div class="action-subtitle">Generates a request form for immediate approval by the owner.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-btn">
+                <span>💬</span> Send Message
+            </div>
+            <div class="contact-btn">
+                <span>📞</span> Call
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

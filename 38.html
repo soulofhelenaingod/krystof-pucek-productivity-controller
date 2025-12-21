@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 30 - Phase 4: Contextual Automation (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #370090;      
+            --brick-color: #B22222; /* Standard Firebrick border */
+            --text-pure-white: #ffffff;
+            --brick-dark: rgba(10, 10, 10, 0.98);
+            --wire-color: #00ffff;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% 0%, #4a1cb0 0%, var(--bg-color) 95%);
+            color: var(--text-pure-white);
+            font-family: 'Open Sans', sans-serif;
+            padding: 1.5vh 4vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CENTERED HEADING (+2PT) */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800; 
+            font-size: calc(4.5vh + 2pt); 
+            margin: 0 0 1vh 0;
+            text-align: center; 
+            letter-spacing: 2px;
+            color: var(--text-pure-white);
+        }
+
+        .evolution-flow {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2.5vh;
+            padding: 2vh 0;
+        }
+
+        /* Vertical evolution line */
+        .evolution-flow::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 0.5vh;
+            background: var(--wire-color);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            z-index: 0;
+            transform: translateX(-50%);
+        }
+
+        .pillar-brick {
+            background: var(--brick-dark);
+            border: 0.5vh solid var(--brick-color);
+            border-radius: 1.8vh;
+            padding: 2.5vh 3vw;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brick-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 0.4vh solid var(--text-pure-white);
+            margin-bottom: 1.5vh;
+            padding-bottom: 1vh;
+        }
+
+        /* PILLAR TITLES (+2PT) */
+        .pillar-title {
+            font-size: calc(3vh + 2pt); 
+            font-weight: 800; 
+            text-transform: uppercase;
+            color: var(--text-pure-white);
+        }
+
+        /* DESCRIPTION (+2PT) */
+        .pillar-desc {
+            font-size: calc(2.6vh + 2pt); 
+            font-weight: 400; 
+            line-height: 1.45;
+            color: var(--text-pure-white);
+        }
+
+        /* TECH INFO (+2PT) */
+        .pillar-tech {
+            margin-top: 2vh;
+            font-size: calc(2.1vh + 2pt);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--wire-color);
+            font-weight: 600;
+        }
+
+        .tag-status {
+            position: absolute;
+            top: 2.5vh;
+            right: 3vw;
+            font-size: calc(2vh + 2pt);
+            font-weight: 800;
+            color: #ffaa00; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Phase Four: Contextual Automation</h1>
+
+    <div class="evolution-flow">
+        
+        <div class="pillar-brick" style="flex: 1;">
+            <div class="tag-status">Fully Automated</div>
+            <div class="brick-header">
+                <div class="pillar-title">Goal and Philosophy</div>
+            </div>
+            <div class="pillar-desc">
+                The absolute elimination of friction in the workflow. The system assumes the role of an intelligent autopilot. Applications are no longer searched for by the user; they arrive proactively based on location and current needs.
+            </div>
+            <div class="pillar-tech">Status: Artificial Intelligence as a Production Assistant</div>
+        </div>
+
+        <div class="pillar-brick" style="flex: 1.3;">
+            <div class="brick-header">
+                <div class="pillar-title">Technical Scope of the Autopilot</div>
+            </div>
+            <div class="pillar-desc">
+                Zone detection via global positioning systems – presenting different tools in the warehouse versus the office. Behavioral analytics learn from user actions to automatically archive unused tools and surface relevant ones.
+            </div>
+            <div class="pillar-tech">Tools: Geolocation / Predictive Behavioral Analysis</div>
+        </div>
+
+        <div class="pillar-brick" style="flex: 1.1;">
+            <div class="brick-header">
+                <div class="pillar-title">User Experience</div>
+            </div>
+            <div class="pillar-desc">
+                The system thinks ahead. As a warehouse worker passes through a gate, their tablet automatically switches to inventory-receipt mode. The interface changes dynamically based on physical presence and predicted intent.
+            </div>
+            <div class="pillar-tech">Result: A system that knows where you are and what you need</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

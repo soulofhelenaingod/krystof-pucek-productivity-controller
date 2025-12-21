@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 21 - STARE Model Workflow (Brick Borders)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-indigo: #370090; 
+            --text-white: #ffffff;
+            /* Define standard brick color */
+            --brick-color: #B22222; 
+            --box-bg: rgba(255, 255, 255, 0.07);
+            
+            /* UPDATED BORDERS TO BRICK COLOR THEME */
+            /* Inactive state is standard brick color */
+            --box-border-inactive: var(--brick-color);
+            /* Active state is brighter red for effect */
+            --box-border-active: #ff3333;
+            /* Glow shadow matches brick theme */
+            --glow-color: rgba(178, 34, 34, 0.6);
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--main-indigo);
+            color: var(--text-white);
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 3vw;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin-bottom: 3vh;
+            font-size: 3.2vh; 
+            flex-shrink: 0;
+        }
+
+        .stare-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1; 
+            gap: 1.5vh;
+        }
+
+        .stare-step {
+            display: flex;
+            align-items: center;
+            background-color: var(--box-bg);
+            /* Use new brick border variable */
+            border: 0.3vh solid var(--box-border-inactive);
+            border-radius: 12px;
+            padding: 2vh 2.5vw;
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease-in-out;
+            animation-name: flowCycle;
+            animation-duration: 7.5s; 
+            animation-iteration-count: infinite;
+            opacity: 0.8; /* Slightly increased opacity for better brick color visibility */
+            flex: 1;
+        }
+
+        .step-letter {
+            font-size: 6vh; 
+            font-weight: 800;
+            margin-right: 3vw;
+            min-width: 6vh;
+            text-align: center;
+            /* Optional: tint letters slightly with brick color for cohesion */
+            text-shadow: 0 0 5px rgba(178, 34, 34, 0.5);
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: calc(2.2vh + 2pt); 
+            margin-bottom: 0.8vh;
+        }
+
+        .step-description {
+            font-size: calc(2.1vh + 2pt); 
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .step-description strong {
+            font-weight: 800;
+            text-decoration: underline;
+            text-decoration-color: var(--brick-color); /* Underline with brick color */
+        }
+
+        /* ANIMATION UPDATED FOR BRICK COLORS */
+        @keyframes flowCycle {
+            0%, 100% {
+                border-color: var(--box-border-inactive);
+                box-shadow: none;
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            10%, 30% {
+                border-color: var(--box-border-active);
+                box-shadow: 0 0 30px var(--glow-color);
+                opacity: 1;
+                transform: scale(1.02); 
+            }
+        }
+
+        .stare-step:nth-child(1) { animation-delay: 0s; }
+        .stare-step:nth-child(2) { animation-delay: 1.5s; }
+        .stare-step:nth-child(3) { animation-delay: 3s; }
+        .stare-step:nth-child(4) { animation-delay: 4.5s; }
+        .stare-step:nth-child(5) { animation-delay: 6s; }
+
+        @keyframes letterGlow { 
+            0%, 100% { text-shadow: 0 0 5px rgba(178, 34, 34, 0.5); } 
+            10%, 30% { text-shadow: 0 0 20px var(--text-white), 0 0 10px var(--brick-color); }
+        }
+
+        .step-letter { animation: letterGlow 7.5s infinite; }
+        .stare-step:nth-child(1) .step-letter { animation-delay: 0s; }
+        .stare-step:nth-child(2) .step-letter { animation-delay: 1.5s; }
+        .stare-step:nth-child(3) .step-letter { animation-delay: 3s; }
+        .stare-step:nth-child(4) .step-letter { animation-delay: 4.5s; }
+        .stare-step:nth-child(5) .step-letter { animation-delay: 6s; }
+    </style>
+</head>
+<body>
+    <h1>Workflow STARE Model: Kiln Operator (Crisis Intervention)</h1>
+    <div class="stare-container">
+        <div class="stare-step">
+            <div class="step-letter">S</div>
+            <div class="step-content">
+                <div class="step-title">Situation: End of Shift / Decreased Attention</div>
+                <div class="step-description">Twelve-hour shift in intense heat and noise. <strong>Decreased attention</strong> and user fatigue at its peak.</div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">T</div>
+            <div class="step-content">
+                <div class="step-title">Task: Immediate Stabilization of the Temperature Curve</div>
+                <div class="step-description">The objective is to <strong>immediately</strong> identify the issue and stabilize the kiln within seconds without searching for information.</div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">A</div>
+            <div class="step-content">
+                <div class="step-title">Action: Algorithm Reprioritizes Icon Ordering</div>
+                <div class="step-description">Backend detects data exceeding safety limits. The module icon moves to the 1st position and visually pulses at <strong>1085°C</strong>.</div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">R</div>
+            <div class="step-content">
+                <div class="step-title">Result: Reduction of Response Time</div>
+                <div class="step-description">Temperature stabilized in time; <strong>no bricks were cracked</strong>. Reaction time reduced from minutes to mere seconds.</div>
+            </div>
+        </div>
+        <div class="stare-step">
+            <div class="step-letter">E</div>
+            <div class="step-content">
+                <div class="step-title">Evolution: Learning and Automation</div>
+                <div class="step-description">Feedback refines the predictive model. The worker's role shifts from a manual operator to an <strong>AI supervisor</strong>.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

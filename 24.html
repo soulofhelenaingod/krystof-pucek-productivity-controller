@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 16 - Administration Section (English)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLOR DEFINITIONS */
+        :root {
+            --bg-color: #370090;      /* Deep Indigo */
+            --bg-dark: #120030;       /* Darker shade for gradient */
+            --text-color: #ffffff;    /* White */
+            --brick-color: #B22222;   /* Firebrick */
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            padding: 2vh 2.5vw 2vh 2.5vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* MAIN HEADING - CENTERED */
+        h1 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 3.8vh; 
+            margin: 0;
+            margin-bottom: 2vh; 
+            letter-spacing: 1px;
+            text-align: center; 
+            flex-shrink: 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        /* MAIN CONTAINER - FLEX COLUMN */
+        .layout-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            gap: 2vh; 
+            flex: 1; 
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- BRICK STYLES --- */
+        .brick {
+            border: 0.4vh solid var(--brick-color);
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(10, 10, 10, 0.95));
+            border-radius: 2vh;
+            padding: 2.5vh 2vw; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        /* --- ROWS --- */
+        .row-header {
+            flex: 1.2; 
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .row-2col {
+            flex: 2; 
+            display: flex;
+            gap: 2vh;
+        }
+
+        .row-3col {
+            flex: 2; 
+            display: flex;
+            gap: 2vh;
+        }
+
+        /* --- TEXT STYLES (CALC + 2PT INCREASE) --- */
+
+        .main-title {
+            font-size: calc(4vh + 2pt); 
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1vh;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            width: 100%;
+        }
+
+        .main-subtitle {
+            font-size: calc(2.4vh + 2pt); 
+            font-weight: 600;
+            color: #eeeeee;
+            margin-bottom: 0.8vh;
+        }
+
+        .main-details {
+            font-size: calc(2vh + 2pt); 
+            font-style: italic;
+            color: #dddddd;
+        }
+
+        .brick-title {
+            font-size: calc(2.8vh + 2pt); 
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-color);
+            margin-bottom: 1.5vh;
+            border-bottom: 0.3vh solid rgba(178, 34, 34, 0.5);
+            padding-bottom: 0.8vh;
+            display: inline-block;
+            text-align: center; 
+            width: 100%;
+        }
+
+        .role-icon {
+            margin-right: 1vh;
+            font-size: 3vh;
+        }
+
+        .role-desc {
+            font-size: calc(2.2vh + 2pt); 
+            margin-bottom: 1.5vh;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #eee;
+            text-align: left;
+        }
+
+        .role-needs {
+            font-size: calc(2vh + 2pt); 
+            line-height: 1.4;
+            color: #ddd;
+            text-align: left;
+        }
+
+        .label {
+            font-weight: 700;
+            color: #fff;
+            text-decoration: underline;
+            text-decoration-color: var(--brick-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="slide-16">
+        <h1>Administration Section</h1>
+
+        <div class="layout-container">
+            
+            <div class="brick row-header">
+                <div class="main-title">👩‍💻 ADMINISTRATION (~250 PEOPLE)</div>
+                <div class="main-subtitle">Planning, HR, Purchasing, Sales, and IT Support.</div>
+                <div class="main-details">
+                    Environment: Office, open-space, meeting rooms. Specifics: PC-based work, ERP systems, mobile CRM, travel.
+                </div>
+            </div>
+
+            <div class="row-2col">
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">📅</span> Production Planner
+                    </div>
+                    <div class="role-desc">Uses multiple monitors, frequently switching between Excel and ERP systems. Monitors real-time production status and line activity.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Drag-and-drop schedule adjustments, material shortage notifications, rapid communication with Shift Leaders.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🧑‍💼</span> HR Specialist
+                    </div>
+                    <div class="role-desc">Moves between the office and interview rooms. Handles sensitive data and responds to daily employee inquiries.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Quick attendance overview, leave request approval, digital payslips, contact directory.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-3col">
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🛒</span> Purchasing Agent
+                    </div>
+                    <div class="role-desc">Communicates with suppliers and processes invoices. Ensures no material shortages occur in production.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Mobile invoice approval, low-stock alerts, shipment tracking.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">🚗</span> Sales Representative
+                    </div>
+                    <div class="role-desc">Frequently traveling to client sites. Rarely uses a laptop, relying heavily on mobile device functionality.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Inventory availability check, field order entry, mobile CRM, product catalog.
+                    </div>
+                </div>
+                <div class="brick" style="flex: 1;">
+                    <div class="brick-title">
+                        <span class="role-icon">💻</span> IT Support
+                    </div>
+                    <div class="role-desc">Moves across the company facilities or solves user technical issues remotely.</div>
+                    <div class="role-needs">
+                        <span class="label">Needs:</span> Mobile ticketing system, outage notifications, remote restart capability, hardware inventory.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Architecture - Optimized Scale</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #370090;      
+            --accent-orange: #ffaa00; 
+            --text-white: #ffffff;
+            --brick-dark: rgba(10, 10, 10, 0.98);
+            --wire-color: #00ffff;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% 0%, #4a1cb0 0%, var(--bg-color) 95%);
+            color: var(--text-white);
+            font-family: 'Open Sans', sans-serif;
+            padding: 1.5vh 3vw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CENTERED HEADING (+2PT) */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800; 
+            font-size: calc(4.5vh + 2pt); 
+            margin: 0 0 2vh 0;
+            text-align: center; 
+            letter-spacing: 2px;
+            color: var(--text-white);
+        }
+
+        .architecture-flow {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            gap: 4.5vh; 
+        }
+
+        /* Schema Bus */
+        .architecture-flow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 0.5vh;
+            background: var(--wire-color);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .pillar-row {
+            display: flex;
+            gap: 2vw;
+            z-index: 1;
+            position: relative;
+            height: 38vh; 
+        }
+
+        .pillar-brick {
+            background: var(--brick-dark);
+            border: 0.45vh solid var(--accent-orange);
+            border-radius: 1.5vh;
+            padding: 2.5vh 2.5vw;
+            flex: 1;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            justify-content: center;
+        }
+
+        .pillar-brick::after {
+            content: "";
+            position: absolute;
+            width: 0.5vh;
+            background: var(--wire-color);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .row-top .pillar-brick::after {
+            bottom: -4.5vh;
+            height: 4.5vh;
+        }
+
+        .row-bottom .pillar-brick::after {
+            top: -4.5vh;
+            height: 4.5vh;
+        }
+
+        .brick-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 0.35vh solid var(--text-white);
+            margin-bottom: 2vh;
+            padding-bottom: 1vh;
+        }
+
+        /* BRICK TITLES (+2PT) */
+        .pillar-title {
+            font-size: calc(3vh + 2pt); 
+            font-weight: 800; 
+            text-transform: uppercase;
+            color: var(--text-white);
+        }
+
+        /* DESCRIPTION (+2PT) */
+        .pillar-desc {
+            font-size: calc(2.5vh + 2pt); 
+            font-weight: 400; 
+            line-height: 1.4;
+            color: var(--text-white);
+        }
+
+        /* TECH INFO (+2PT) */
+        .pillar-tech {
+            margin-top: 2.5vh;
+            font-size: calc(2vh + 2pt);
+            color: var(--text-white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.95;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>System Architecture</h1>
+
+    <div class="architecture-flow">
+        
+        <div class="pillar-row row-top">
+            <div class="pillar-brick">
+                <div class="brick-header">
+                    <div class="pillar-title">Communication Interface</div>
+                </div>
+                <div class="pillar-desc">
+                    Hybrid data transfer combining HTTPS transactions and WebSockets technology for real-time telemetry.
+                </div>
+                <div class="pillar-tech">STOMP / JSON</div>
+            </div>
+            <div class="pillar-brick">
+                <div class="brick-header">
+                    <div class="pillar-title">Logic and Resilience</div>
+                </div>
+                <div class="pillar-desc">
+                    Priority ranking algorithms and Circuit Breaker mechanisms to ensure availability during ERP outages.
+                </div>
+                <div class="pillar-tech">Weighted Ranking / Resilience Management</div>
+            </div>
+        </div>
+
+        <div class="pillar-row row-bottom">
+            <div class="pillar-brick">
+                <div class="brick-header">
+                    <div class="pillar-title">Data and State</div>
+                </div>
+                <div class="pillar-desc">
+                    Redis memory for hot data combined with relational databases such as PostgreSQL or Oracle.
+                </div>
+                <div class="pillar-tech">Hibernate / Spring Data Persistence</div>
+            </div>
+            <div class="pillar-brick">
+                <div class="brick-header">
+                    <div class="pillar-title">Security</div>
+                </div>
+                <div class="pillar-desc">
+                    Zero Trust authentication. JWT validation without storing sessions on the server.
+                </div>
+                <div class="pillar-tech">OpenID Connect / OAuth 2.0</div>
+            </div>
+            <div class="pillar-brick">
+                <div class="brick-header">
+                    <div class="pillar-title">Integration</div>
+                </div>
+                <div class="pillar-desc">
+                    Tracking production events via industrial protocols and centralized identity management.
+                </div>
+                <div class="pillar-tech">MQTT / Entra / ERP Connect</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

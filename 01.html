@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Causes - Final Readable</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #370090;
+            --bg-dark: #120030;
+            --text-color: #ffffff;
+            --accent-red: #B22222;
+            --card-bg: rgba(20, 20, 35, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-dark) 100%);
+            color: var(--text-color);
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 3vw;
+            box-sizing: border-box;
+        }
+
+        header {
+            flex: 0 0 auto;
+            text-align: center;
+            margin-bottom: 2vh;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 2.2rem;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2vw;
+            flex: 1;
+            height: 100%; 
+            min-height: 0; 
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 2vh 1.5vw; /* Lehce menší padding nahoře/dole, aby se vešlo větší písmo */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            height: 100%; 
+            box-sizing: border-box;
+        }
+
+        .problem-number {
+            font-size: 0.9rem; /* ZVĚTŠENO (bylo 0.8) */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 700;
+            margin-bottom: 1vh;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin: 0 0 1.5vh 0; /* Menší mezera pod nadpisem */
+            color: #fff;
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: uppercase;
+            min-height: 3.4rem; 
+        }
+
+        p.description {
+            font-size: 1.1rem;
+            line-height: 1.45; /* Lehce stažené řádkování */
+            font-weight: 300;
+            color: #e0e0e0;
+            margin: 0 0 1.5vh 0;
+            /* ZVĚTŠENO: Spacer pro zarovnání, protože písmo je větší */
+            min-height: 9.5rem; 
+        }
+
+        .consequence-box {
+            background: rgba(178, 34, 34, 0.25);
+            border-left: 3px solid var(--accent-red);
+            padding: 1.5vh;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2vh;
+            
+            /* Zarovnávací triky */
+            margin-top: auto; 
+            min-height: 5.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .consequence-label {
+            display: block;
+            font-size: 0.95rem; /* ZVĚTŠENO (bylo 0.85) */
+            text-transform: uppercase;
+            color: #ffcccc;
+            font-weight: 700;
+            margin-bottom: 0.5vh;
+        }
+
+        .consequence-text {
+            font-size: 1.05rem; /* ZVĚTŠENO (bylo 0.95) */
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.35;
+        }
+
+        .why-section {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5vh;
+            margin-top: auto; 
+        }
+
+        .why-label {
+            color: var(--accent-red);
+            font-weight: 800;
+            font-size: 1.1rem; /* ZVĚTŠENO (bylo 1.0) */
+            margin-right: 5px;
+        }
+
+        .why-text {
+            font-size: 1.1rem; /* ZVĚTŠENO (bylo 1.0) */
+            font-weight: 400;
+            font-style: italic;
+            color: #ddd;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Root causes are the reasons to build the tool (1/2)</h1>
+    </header>
+
+    <main class="container">
+        
+        <article class="card">
+            <div class="problem-number">Problem 01</div>
+            <h2>Time and Energy Waste in Searching</h2>
+            <p class="description">
+                A large workforce spends hours daily searching for the correct applications and documents. They cannot react immediately because resources aren't at hand. Even when found, usage is often unclear.
+            </p>
+            <div class="consequence-box">
+                <span class="consequence-label">Consequence</span>
+                <span class="consequence-text">Time loss + Metabolic-energy drain + Friction + Cognitive load × Employee count = LOSS OF MONEY.</span>
+            </div>
+            <div class="why-section">
+                <span class="why-label">WHY:</span>
+                <span class="why-text">Lack of an anti-entropic tool. The reality of entropy requires a system.</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="problem-number">Problem 02</div>
+            <h2>Information Fragmentation</h2>
+            <p class="description">
+                Application data is scattered everywhere: emails, legacy databases, and inside colleagues' heads. Multiple inputs, inconsistent locations, and no single-form central hub.
+            </p>
+            <div class="consequence-box">
+                <span class="consequence-label">Consequence</span>
+                <span class="consequence-text">Decelerated decision processes + Working with outdated data + Constant re-verification = LOSS OF MONEY.</span>
+            </div>
+            <div class="why-section">
+                <span class="why-label">WHY:</span>
+                <span class="why-text">Lack of a central tool built on axioms that proactively reduce chaos.</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="problem-number">Problem 03</div>
+            <h2>Operational Blindness</h2>
+            <p class="description">
+                Paying for functionally overlapping software. Tools are only partially utilized. Variation and complexity increase. The company loses track of its assets, creating "dead zones."
+            </p>
+            <div class="consequence-box">
+                <span class="consequence-label">Consequence</span>
+                <span class="consequence-text">Duplicate license fees + Maintenance of dead code + Technical debt without value-add = LOSS OF MONEY.</span>
+            </div>
+            <div class="why-section">
+                <span class="why-label">WHY:</span>
+                <span class="why-text">Central registry identifies overlaps, reduces friction all company across.</span>
+            </div>
+        </article>
+
+    </main>
+
+</body>
+</html>
