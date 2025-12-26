@@ -59,7 +59,7 @@
             border: 1px solid var(--card-border);
             border-top: 4px solid var(--accent-red);
             border-radius: 12px;
-            padding: 2vh 1.5vw; /* Lehce menší padding nahoře/dole, aby se vešlo větší písmo */
+            padding: 2vh 1.5vw; 
             display: flex;
             flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -69,7 +69,7 @@
         }
 
         .problem-number {
-            font-size: 0.9rem; /* ZVĚTŠENO (bylo 0.8) */
+            font-size: 1.1rem; 
             text-transform: uppercase;
             letter-spacing: 2px;
             color: rgba(255,255,255,0.5);
@@ -79,7 +79,7 @@
 
         h2 {
             font-size: 1.4rem;
-            margin: 0 0 1.5vh 0; /* Menší mezera pod nadpisem */
+            margin: 0 0 1.5vh 0; 
             color: #fff;
             font-weight: 800;
             line-height: 1.2;
@@ -88,13 +88,12 @@
         }
 
         p.description {
-            font-size: 1.1rem;
-            line-height: 1.45; /* Lehce stažené řádkování */
+            font-size: 1.3rem; 
+            line-height: 1.4; 
             font-weight: 300;
             color: #e0e0e0;
             margin: 0 0 1.5vh 0;
-            /* ZVĚTŠENO: Spacer pro zarovnání, protože písmo je větší */
-            min-height: 9.5rem; 
+            min-height: 11rem; 
         }
 
         .consequence-box {
@@ -104,7 +103,6 @@
             border-radius: 0 8px 8px 0;
             margin-bottom: 2vh;
             
-            /* Zarovnávací triky */
             margin-top: auto; 
             min-height: 5.5rem;
             display: flex;
@@ -114,7 +112,7 @@
 
         .consequence-label {
             display: block;
-            font-size: 0.95rem; /* ZVĚTŠENO (bylo 0.85) */
+            font-size: 1.15rem; 
             text-transform: uppercase;
             color: #ffcccc;
             font-weight: 700;
@@ -122,7 +120,7 @@
         }
 
         .consequence-text {
-            font-size: 1.05rem; /* ZVĚTŠENO (bylo 0.95) */
+            font-size: 1.05rem; 
             font-weight: 600;
             color: #fff;
             line-height: 1.35;
@@ -137,21 +135,20 @@
         .why-label {
             color: var(--accent-red);
             font-weight: 800;
-            font-size: 1.1rem; /* ZVĚTŠENO (bylo 1.0) */
+            font-size: 1.3rem; /* UPDATED: Increased from 1.1rem */
             margin-right: 5px;
         }
 
         .why-text {
-            font-size: 1.1rem; /* ZVĚTŠENO (bylo 1.0) */
+            font-size: 1.3rem; /* UPDATED: Increased from 1.1rem */
             font-weight: 400;
             font-style: italic;
+            line-height: 1.3; /* Added for better readability at larger size */
             color: #ddd;
         }
-
     </style>
 </head>
 <body>
-
     <header>
         <h1>Root causes are the reasons to build the tool (1/2)</h1>
     </header>
@@ -207,6 +204,5 @@
         </article>
 
     </main>
-
 </body>
 </html>
